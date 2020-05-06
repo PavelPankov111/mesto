@@ -17,6 +17,7 @@ html{
 
 .header{
     margin-top: 45px;
+    max-width:  882px;
 }
 
 .logo{
@@ -31,6 +32,7 @@ html{
 }
 
 .Profile{
+    max-width:  882px;
     margin-top: 35px;
     display:flex;
     align-items: center;
