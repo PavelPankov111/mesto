@@ -1,0 +1,8 @@
+@import url(./__image/Element__image.css);
+@import url(./__title-like/Element__title-like.css);
+@import url(./__title/Element__title.css);
+
+.Element{
+    background: #FFFFFF;
+    border-radius: 10px;
+}

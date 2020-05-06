@@ -1,0 +1,7 @@
+.Element__title-like{
+    display: flex;
+    justify-content: space-between;
+    max-width: 246px;
+    margin: auto;
+    min-height: 77px;
+}
