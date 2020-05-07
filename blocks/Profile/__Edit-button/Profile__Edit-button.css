@@ -6,6 +6,11 @@
     margin-bottom: 12px;
 }
 
+.Profile__Edit-button:hover{
+    opacity: .6;
+    transition: .4s;
+}
+
 @media screen and (max-width : 740px){
     .Profile__Edit-button{
         margin-bottom: 7px;

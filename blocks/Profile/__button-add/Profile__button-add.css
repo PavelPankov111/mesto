@@ -5,6 +5,12 @@
     width: 150px;
     height: 50px;
     display: flex;
+    position: relative;
+}
+
+.Profile__button-add:hover{
+    opacity: .6;
+    transition: 0.4s;
 }
 
 @media screen and (max-width : 580px){
