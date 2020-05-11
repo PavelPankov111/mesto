@@ -5,7 +5,8 @@
     width: 150px;
     height: 50px;
     display: flex;
-    position: relative;
+    background: black;
+    padding: 0;
 }
 
 .Profile__button-add:hover{

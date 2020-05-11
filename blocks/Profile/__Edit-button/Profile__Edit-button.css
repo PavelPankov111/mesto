@@ -4,11 +4,13 @@
     max-width: 24px;
     max-height: 24px;
     margin-bottom: 12px;
+    background: black;
+    padding: 0;
 }
 
 .Profile__Edit-button:hover{
     opacity: .6;
-    transition: .4s;
+    transition: .3s;
 }
 
 @media screen and (max-width : 740px){

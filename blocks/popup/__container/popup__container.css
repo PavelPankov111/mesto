@@ -1,0 +1,11 @@
+.popup__container{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;    
+    width: 430px;
+    height: 330px;
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}

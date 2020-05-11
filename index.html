@@ -5,10 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./vendor/normalize.css">
     <link rel="stylesheet" href="./pages/index.css">
+    <script src="script.js"></script>
     <title>Место</title>
 </head>
 <body>
-<div class="page">
+    <div class="popup">
+        <div class="popup__container">
+          <img class="popup__vector" src="./images/Close Icon.svg">
+        <div class="popup__content">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <div class="popup__inputs">
+        <input type="text"  class="popup__input" value="Жак-Ив Кусто">
+        <div class="popup__line"></div>
+        <input type="text" class="popup__input" value="Исследователь океана">
+        <div class="popup__line"></div>
+    </div>
+   <div class="popup__button">
+    <h3 class="popup__button-title">Сохранить</h3>
+   </div>
+</div>
+</div>
+
+    <div class="page">
     <section class="header">
         <img class="header__logo" alt="Место Россия" src="./images/Vector.svg">
         <div class="header__line"></div>
@@ -19,17 +37,18 @@
         <div class="Profile__Info">
             <div class="Profile__Button">
                 <h1 class="Profile__title">Жак-Ив Кусто</h1>
-                <div class="Profile__Edit-button">
+                <button class="Profile__Edit-button">
                     <img class="Profile__vector-button" src="./images/Vector1.svg" alt="карандаш">
-                </div>
+                </button>
             </div>
             <p class="Profile__subtitle">Исследователь океана</p>
         </div>
     </div>
-    <div class="Profile__button-add">
+    <button class="Profile__button-add">
         <img class="Profile__vector-add" src="./images/Vector2.svg" alt="плюсик">
-    </div>
+    </button>
     </section>
+    
     <section class="Elements">
         <div class="Element">
             <img class="Element__image" src="./images/img1.jpg" alt="Карачаевск">
@@ -58,6 +77,7 @@
                 <h2 class="Element__title">Гора Эльбрус</h2>
                 <img class="Element__like" src="./images/like.svg">
             </div>
+        
         </div>
         <div class="Element">
             <img class="Element__image" src="./images/img5.jpg" alt="Гора Эльбрус">
@@ -79,4 +99,5 @@
     </footer>
 </div>
 </body>
+</div>
 </html>

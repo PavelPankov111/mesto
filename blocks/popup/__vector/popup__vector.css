@@ -1,0 +1,10 @@
+.popup__vector{
+    position:absolute;
+    top:-50px;
+    right:-50px;
+}
+
+.popup__vector:hover{
+    opacity: .5;
+    transition: .4s;
+}
