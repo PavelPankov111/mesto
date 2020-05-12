@@ -8,4 +8,26 @@
     display: none;
     align-items: center;
     justify-content: center;
+    top:440px;
+}
+
+@media screen and (max-width : 620px){
+    .popup__container{
+        width: 333px;
+        height: 255px;
+    }
+}
+
+@media screen and (max-width : 580px){
+    .popup__container{
+        top:410px;
+    }
+}
+
+@media screen and (max-width : 425px){
+    .popup__container{
+        top:370px;
+        width: 78.35vw;
+        height: 60vw;
+    }
 }

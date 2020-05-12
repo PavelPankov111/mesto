@@ -6,3 +6,17 @@
     color: #FFFFFF;
     z-index: 2;
 }
+
+@media screen and (max-width : 620px){
+    .popup__button-title{
+        font-size: 16px;
+        line-height: 19px;
+    }
+}
+
+@media screen and (max-width : 425px){
+    .popup__button-title{
+        font-size: 3.76vw;
+        line-height: 4.47vw;
+    }
+}
