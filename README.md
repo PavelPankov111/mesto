@@ -33,8 +33,12 @@
   
 ### 3. javascript:
   ```javascript
-const simple = "Я просто строка!";
-console.log(simple);
+  function showClick () {
+    document.querySelector('.popup').style.background = 'rgba(0,0,0,.6)';
+    document.querySelector('.popup').style.position = 'absolute';
+    document.querySelector('.popup__container').style.display = 'flex';
+    }
+  
 ```
 
 ## Сайт является кроссбраузерным и работает во всех известных браузерах(Safari,Яндекс Браузер,Google Chrome,Firefox)
