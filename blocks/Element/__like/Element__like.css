@@ -1,0 +1,10 @@
+.Element__like{
+    cursor: grab;
+    margin: auto 0 auto auto;
+    align-self: start;
+}
+
+.Element__like:hover{
+    opacity: .5;
+    transition: 0.2s;
+}
