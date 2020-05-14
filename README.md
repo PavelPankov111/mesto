@@ -1,17 +1,46 @@
-# Проект 4: Место
+# Место
+## В данной работе используется изображение и имя ученого и исслдователя Жак-Ив Кусто.
+### В этой работе были применены все знания, полученные за время обучения.
+## В отличии от предыдущих работ, здесь используется язык програмирования "javascript".
+### Здесь применено:
+1. _html5_
+2. _css3_
+3. _javascript_
 
-### Обзор
+### 1. html:
+``` html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<title>Место</title>
+</head>
+```
+  
+### 2. css:
+ ```css
+  .popup{
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background: rgba(0,0,0,0);
+    position:initial;
+}
+```
+  
+### 3. javascript:
+  ```javascript
+const simple = "Я просто строка!";
+console.log(simple);
+```
 
-* Figma
-* Картинки
-
-**Figma**
-
-* [Ссылка на макет в Figma](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4)
-
-**Картинки**
-
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
-
-Удачи!
+## Сайт является кроссбраузерным и работает во всех известных браузерах(Safari,Яндекс Браузер,Google Chrome,Firefox)
+## Github Pages:  https://pavelpankov111.github.io/mesto/
+  
+  
+  
+  
+  
