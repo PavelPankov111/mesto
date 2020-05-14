@@ -1,21 +1,23 @@
 .popup__content{
-    min-width:350px;
-    min-height:260px;
+    width:350px;
+    height:260px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    min-width: 209px;
+    min-height: 160px;
 }
 
 @media screen and (max-width : 620px){
     .popup__content{
-        min-width:277px;
-        min-height:201px;
+        width:277px;
+        height:201px;
     }
 }
 
 @media screen and (max-width : 425px){
     .popup__content{
-        min-width:65.18vw;
-        min-height:47.29vw;
+        width:65.18vw;
+        height:47.29vw;
     }
 }

@@ -2,7 +2,12 @@
     position:absolute;
     top:-50px;
     right:-50px;
+<<<<<<< HEAD
     cursor: grab;
+=======
+    min-width: 37px;
+    min-height: 37px;
+>>>>>>> Features
 }
 
 .popup__vector:hover{
