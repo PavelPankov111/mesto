@@ -19,26 +19,34 @@ function closePopup(){
 close.addEventListener('click', closePopup);
 
 
-//let formElement = document.querySelector('.popup__button')// Воспользуйтесь методом querySelector()
 
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
-//function formSubmitHandler (evt) {
-   // evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-                                                // Так мы можем определить свою логику отправки.
-                                                // О том, как это делать, расскажем позже.
 
-    // Находим поля формы в DOM
-   // let nameInput = // Воспользуйтесь инструментом .querySelector()
-    //let jobInput = // Воспользуйтесь инструментом .querySelector()
 
-    // Получите значение полей из свойства value
 
-    // Выберите элементы, куда должны быть вставлены значения полей
+let formElement = document.querySelector('.popup');
 
-    // Вставьте новые значения с помощью textContent
-//}
+ function formSubmitHandler (evt) {
+    evt.preventDefault();
 
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
-//formElement.addEventListener('submit', formSubmitHandler);
+    let nameInput = document.querySelector('.popup__input-name');
+    let jobInput = document.querySelector('.popup__input');
+
+    let name = document.querySelector('.Profile__title');
+    let Input = document.querySelector('.Profile__subtitle');
+
+    name.textContent = nameInput.value;
+    Input.textContent = jobInput.value;
+}
+
+formElement.addEventListener('submit', formSubmitHandler);
+
+
+let save =  document.querySelector('.popup__button');
+
+function savePopup(){
+    document.querySelector('.popup').style.background = 'rgba(0,0,0,0)';
+    document.querySelector('.popup').style.position = 'initial';
+    document.querySelector('.popup__container').style.display = 'none';
+}
+
+save.addEventListener('click', savePopup);

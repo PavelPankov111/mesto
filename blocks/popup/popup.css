@@ -8,6 +8,7 @@
 @import url(./__button-title/popup__button-title.css);
 @import url(./__vector/popup__vector.css);
 @import url(./__input/popup__input.css);
+@import url(./__input-name/popup__input-name.css);
 
 
 .popup{

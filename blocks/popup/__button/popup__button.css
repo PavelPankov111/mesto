@@ -6,6 +6,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.popup__button:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background:rgba(42, 44, 47, 0);
+    transition: all 0.2s linear;
+}
+
+.popup__button:hover:before{
+    background:rgba(42, 44, 47, 0.9);
 }
 
 @media screen and (max-width : 620px){
