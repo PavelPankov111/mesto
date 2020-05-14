@@ -2,6 +2,7 @@
     position:absolute;
     top:-50px;
     right:-50px;
+    cursor: grab;
 }
 
 .popup__vector:hover{
