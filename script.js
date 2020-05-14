@@ -32,7 +32,7 @@ let formElement = document.querySelector('.popup');
     let jobInput = document.querySelector('.popup__input');
 
     let name = document.querySelector('.profile__title');
-    let Input = document.querySelector('profile__subtitle');
+    let Input = document.querySelector('.profile__subtitle');
 
     name.textContent = nameInput.value;
     Input.textContent = jobInput.value;
