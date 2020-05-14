@@ -2,6 +2,8 @@
     position:absolute;
     top:-50px;
     right:-50px;
+    min-width: 37px;
+    min-height: 37px;
 }
 
 .popup__vector:hover{
