@@ -1,9 +1,9 @@
-@import url(./__image/Element__image.css);
-@import url(./__title-like/Element__title-like.css);
-@import url(./__title/Element__title.css);
-@import url(./__like/Element__like.css);
+@import url(./__image/element__image.css);
+@import url(./__title-like/element__title-like.css);
+@import url(./__title/element__title.css);
+@import url(./__like/element__like.css);
 
-.Element{
+.element{
     background: #FFFFFF;
     border-radius: 10px;
 }

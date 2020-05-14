@@ -1,4 +1,4 @@
-.Elements{
+.elements{
     max-width:  882px;
     margin: 47px auto auto auto;
     display: grid;
@@ -8,14 +8,14 @@
 }
 
 @media screen and (max-width : 950px){
-    .Elements{
+    .elements{
         grid-template-columns: 282px 282px;
         max-width: min-content;
     }
 }
 
 @media screen and (max-width : 620px){
-    .Elements{
+    .elements{
         grid-template-columns: 282px;
         margin: 36px auto auto auto;
     }

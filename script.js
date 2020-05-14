@@ -1,4 +1,4 @@
-let buttonEdit = document.querySelector('.Profile__Edit-button');
+let buttonEdit = document.querySelector('.profile__edit-button');
 
     function showClick () {
     document.querySelector('.popup').style.background = 'rgba(0,0,0,.6)';
@@ -31,8 +31,8 @@ let formElement = document.querySelector('.popup');
     let nameInput = document.querySelector('.popup__input-name');
     let jobInput = document.querySelector('.popup__input');
 
-    let name = document.querySelector('.Profile__title');
-    let Input = document.querySelector('.Profile__subtitle');
+    let name = document.querySelector('.profile__title');
+    let Input = document.querySelector('profile__subtitle');
 
     name.textContent = nameInput.value;
     Input.textContent = jobInput.value;
