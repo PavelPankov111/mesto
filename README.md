@@ -33,11 +33,11 @@
   
 ### 3. javascript:
   ```javascript
-  function showClick () {
-    document.querySelector('.popup').style.background = 'rgba(0,0,0,.6)';
-    document.querySelector('.popup').style.position = 'absolute';
-    document.querySelector('.popup__container').style.display = 'flex';
-    }
+  function formSubmitHandler (evt) {
+    evt.preventDefault();
+    name.textContent = nameInput.value;
+    Input.textContent = jobInput.value;
+  }
   
 ```
 
