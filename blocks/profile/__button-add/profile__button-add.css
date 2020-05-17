@@ -15,7 +15,7 @@
     transition: 0.1s;
 }
 
-@media screen and (max-width : 580px){
+@media screen and (max-width : 740px){
     .profile__button-add{
         width: 282px;
         height: 50px;

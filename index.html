@@ -3,32 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./vendor/normalize.css">
     <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
 </head>
 <body>
     <div class="page">
         <div class="popup">
-            <form class="popup__container">
+            <form name="OpenForm" method="get" action="#" class="popup__container">
+                <button type="reset" class="popup__vector-button">
                 <img class="popup__vector" src="./images/Close Icon.svg" alt="кнопка закрытия">
+                </button>
                 <div class="popup__content">
                     <h3 class="popup__title">Редактировать профиль</h3>
                     <div class="popup__inputs">
-                    <input type="text"  class="popup__input-name" value="Жак-Ив Кусто">
-                    <div class="popup__line"></div>
-                    <input type="text" class="popup__input" value="Исследователь океана">
-                    <div class="popup__line"></div>
+                    <input type="text" name="inputTitle" class="popup__input popup__input-name" value="Жак-Ив Кусто">
+                    <input type="text" name="inputSubtitle" class="popup__input popup__input-job" value="Исследователь океана">
                 </div>
                <button class="popup__button">
-                <h3 class="popup__button-title">Сохранить</h3>
+                Сохранить
                </button>
             </div>
         </form>
         </div>
     <header class="header">
         <img class="header__logo" alt="Место Россия" src="./images/Vector.svg">
-        <div class="header__line"></div>
     </header>
     <section class="profile">
         <div class="profile__avatar-info">
@@ -53,28 +51,36 @@
             <img class="element__image" src="./images/img1.jpg" alt="Карачаевск">
             <div class="element__title-like">
                 <h2 class="element__title">Карачаевск</h2>
+                <button class="element__button-like">
                 <img class="element__like" src="./images/like.svg" alt="сердечко">
+                </button>
             </div>
         </div>
         <div class="element">
             <img class="element__image" src="./images/img2.jpg" alt="Гора Эльбрус">
             <div class="element__title-like">
                 <h2 class="element__title">Гора Эльбрус</h2>
+                <button class="element__button-like">
                 <img class="element__like" src="./images/like.svg" alt="сердечко">
+                </button>
             </div>
         </div>
         <div class="element">
             <img class="element__image" src="./images/img3.jpg" alt="Домбай">
             <div class="element__title-like">
                 <h2 class="element__title">Домбай</h2>
+                <button class="element__button-like">
                 <img class="element__like" src="./images/like.svg" alt="сердечко">
+               </button>
             </div> 
         </div>
         <div class="element">
             <img class="element__image" src="./images/img4.jpg" alt="Карачаевск">
             <div class="element__title-like">
                 <h2 class="element__title">Гора Эльбрус</h2>
+                <button class="element__button-like">
                 <img class="element__like" src="./images/like.svg" alt="сердечко">
+                </button>
             </div>
         
         </div>
@@ -82,19 +88,23 @@
             <img class="element__image" src="./images/img5.jpg" alt="Гора Эльбрус">
             <div class="element__title-like">
                 <h2 class="element__title">Домбай</h2>
+                <button class="element__button-like">
                 <img class="element__like" src="./images/like.svg" alt="сердечко">
+                </button>
             </div>
         </div>
         <div class="element">
             <img class="element__image" src="./images/img6.jpg" alt="Домбай">
             <div class="element__title-like">
                 <h2 class="element__title">Карачаево-Ч...</h2>
+                <button class="element__button-like">
                 <img class="element__like" src="./images/like.svg" alt="сердечко">
+                </button>
             </div>
         </div>
     </section>
     <footer class="footer">
-        <h3 class="footer__title">&copy; 2020 Mesto Russia</h3>
+        <p class="footer__title">&copy; 2020 Mesto Russia</p>
     </footer>
 </div>
 <script src="./script.js">

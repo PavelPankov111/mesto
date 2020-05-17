@@ -1,0 +1,20 @@
+.popup__vector-button{
+    position:absolute;
+    top:-50px;
+    right:-50px;
+    cursor: grab;
+    padding: 0;
+    width:58px;
+    height:58px;
+    padding:0;
+    background: rgba(0,0,0,0.01);
+    border: none;
+}
+
+@media screen and (max-width : 620px){
+    .popup__vector-button{
+        top: -43px;
+        right: -43px;
+    }
+    
+}

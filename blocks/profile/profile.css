@@ -18,15 +18,15 @@
     flex-direction: row;
 }
 
+@media screen and (max-width : 740px){
+    .profile{
+         flex-direction: column;
+    }
+   
+}
+
 @media screen and (max-width : 950px){
     .profile{
         max-width: 92.84vw;
-    }
-}
-
-@media screen and (max-width : 580px){
-    .profile{
-        display: flex;
-        flex-direction: column;
     }
 }

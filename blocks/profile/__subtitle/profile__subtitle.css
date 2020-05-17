@@ -3,12 +3,22 @@
     font-size: 18px;
     line-height: 22px;
     color: #FFFFFF;
-    margin-top: 5px;
+    margin: 5px auto auto auto;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 287px;
 }
 
-@media screen and (max-width : 580px){
+@media screen and (max-width : 740px){
     .profile__subtitle{
         text-align: center;
-        margin-bottom: 36px;
+        margin: 0 auto 36px;
+    }
+}
+@media screen and (max-width : 425px){
+    .profile__subtitle{
+        font-size: 14px;
+        line-height: 17px;
     }
 }

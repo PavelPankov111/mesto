@@ -4,7 +4,7 @@
     border-radius: 10px;    
     width: 430px;
     height: 330px;
-    display: none;
+    display:flex;
     align-items: center;
     justify-content: center;
     top:6%;
@@ -21,16 +21,14 @@
 
 @media screen and (max-width : 425px){
     .popup__container{
-        top:3%;
-        width: 78.35vw;
+        width:78.35vw;
         height: 60vw;
+        top:3%;
     }
 }
 
 @media screen and (max-width : 375px){
     .popup__container{
         top:0;
-        width: 78.35vw;
-        height: 60vw;
     }
 }

@@ -2,9 +2,8 @@
     display:flex;
 }
 
-@media screen and (max-width : 580px){
+@media screen and (max-width : 740px){
     .profile__avatar-info{
-        display: flex;
         flex-direction: column;
         align-items: center;
     }
