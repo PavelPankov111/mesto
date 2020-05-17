@@ -11,6 +11,8 @@ let close = document.querySelector('.popup__vector');
 
 function showClick () {
     formPopup.classList.add('popup__opened');
+    nameInput.value = name.textContent
+    jobInput.value =  Input.textContent
 }
   
 buttonEdit.addEventListener('click', showClick);
