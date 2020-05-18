@@ -8,25 +8,8 @@
 </head>
 <body>
     <div class="page">
-        <div class="popup">
-            <form name="OpenForm" method="get" action="#" class="popup__container">
-                <button type="reset" class="popup__vector-button">
-                <img class="popup__vector" src="./images/Close Icon.svg" alt="кнопка закрытия">
-                </button>
-                <div class="popup__content">
-                    <h3 class="popup__title">Редактировать профиль</h3>
-                    <div class="popup__inputs">
-                    <input type="text" name="inputTitle" class="popup__input popup__input-name" >
-                    <input type="text" name="inputSubtitle" class="popup__input popup__input-job">
-                </div>
-               <button class="popup__button">
-                Сохранить
-               </button>
-            </div>
-        </form>
-        </div>
     <header class="header">
-        <img class="header__logo" alt="Место Россия" src="./images/Vector.svg">
+        <img class="header__logo" alt="Место Россия" src="./images/vector.svg">
     </header>
     <section class="profile">
         <div class="profile__avatar-info">
@@ -34,15 +17,15 @@
         <div class="profile__info">
             <div class="profile__button">
                 <h1 class="profile__title">Жак-Ив Кусто</h1>
-                <button class="profile__edit-button">
-                    <img class="profile__vector-button" src="./images/Vector1.svg" alt="карандаш">
+                <button type="button" class="profile__edit-button">
+                    <img class="profile__vector-button" src="./images/vector1.svg" alt="карандаш">
                 </button>
             </div>
             <p class="profile__subtitle">Исследователь океана</p>
         </div>
     </div>
-    <button class="profile__button-add">
-        <img class="profile__vector-add" src="./images/Vector2.svg" alt="плюсик">
+    <button type="button" class="profile__button-add">
+        <img class="profile__vector-add" src="./images/vector2.svg" alt="плюсик">
     </button>
 </section>
     
@@ -51,7 +34,7 @@
             <img class="element__image" src="./images/img1.jpg" alt="Карачаевск">
             <div class="element__title-like">
                 <h2 class="element__title">Карачаевск</h2>
-                <button class="element__button-like">
+                <button type="button" class="element__button-like">
                 <img class="element__like" src="./images/like.svg" alt="сердечко">
                 </button>
             </div>
@@ -60,7 +43,7 @@
             <img class="element__image" src="./images/img2.jpg" alt="Гора Эльбрус">
             <div class="element__title-like">
                 <h2 class="element__title">Гора Эльбрус</h2>
-                <button class="element__button-like">
+                <button type="button" class="element__button-like">
                 <img class="element__like" src="./images/like.svg" alt="сердечко">
                 </button>
             </div>
@@ -69,7 +52,7 @@
             <img class="element__image" src="./images/img3.jpg" alt="Домбай">
             <div class="element__title-like">
                 <h2 class="element__title">Домбай</h2>
-                <button class="element__button-like">
+                <button type="button" class="element__button-like">
                 <img class="element__like" src="./images/like.svg" alt="сердечко">
                </button>
             </div> 
@@ -78,7 +61,7 @@
             <img class="element__image" src="./images/img4.jpg" alt="Карачаевск">
             <div class="element__title-like">
                 <h2 class="element__title">Гора Эльбрус</h2>
-                <button class="element__button-like">
+                <button type="button" class="element__button-like">
                 <img class="element__like" src="./images/like.svg" alt="сердечко">
                 </button>
             </div>
@@ -88,7 +71,7 @@
             <img class="element__image" src="./images/img5.jpg" alt="Гора Эльбрус">
             <div class="element__title-like">
                 <h2 class="element__title">Домбай</h2>
-                <button class="element__button-like">
+                <button type="button" class="element__button-like">
                 <img class="element__like" src="./images/like.svg" alt="сердечко">
                 </button>
             </div>
@@ -97,7 +80,7 @@
             <img class="element__image" src="./images/img6.jpg" alt="Домбай">
             <div class="element__title-like">
                 <h2 class="element__title">Карачаево-Ч...</h2>
-                <button class="element__button-like">
+                <button type="button" class="element__button-like">
                 <img class="element__like" src="./images/like.svg" alt="сердечко">
                 </button>
             </div>
@@ -106,6 +89,23 @@
     <footer class="footer">
         <p class="footer__title">&copy; 2020 Mesto Russia</p>
     </footer>
+    <div class="popup">
+        <form name="OpenForm" method="get" action="#" class="popup__container">
+            <button type="reset" class="popup__vector-button">
+            <img class="popup__vector" src="./images/close__icon.svg" alt="кнопка закрытия">
+            </button>
+            <div class="popup__content">
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <div class="popup__inputs">
+                <input type="text" name="inputTitle" class="popup__input popup__input_name" >
+                <input type="text" name="inputSubtitle" class="popup__input popup__input_job">
+            </div>
+           <button type="submit" class="popup__button">
+            Сохранить
+           </button>
+           </div>
+        </form>
+    </div>
 </div>
 <script src="./script.js">
 </script>
