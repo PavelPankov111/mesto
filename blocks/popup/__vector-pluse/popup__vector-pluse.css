@@ -1,0 +1,11 @@
+.popup__vector-pluse{
+    min-width: 37px;
+    min-height: 37px;
+}
+
+@media screen and (max-width : 620px){
+    .popup__vector-pluse{
+        width: 37px;
+        height: 37px;
+    }
+}

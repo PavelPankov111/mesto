@@ -1,0 +1,13 @@
+.popup__inputs-pluse{
+    height: 87px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    font-weight: normal;
+}
+
+@media screen and (max-width : 620px){
+    .popup__inputs-pluse{
+        height: 72px;
+    }
+}

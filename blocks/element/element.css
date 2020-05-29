@@ -1,11 +1,17 @@
 
 @import url(./__title-like/element__title-like.css);
 @import url(./__title/element__title.css);
-@import url(./__like/element__like.css);
 @import url(./__button-like/element__button-like.css);
+@import url(./__trashs/element__trashs.css);
+@import url(./__image/element__image.css);
+@import url(./__button-like/element__button-like.css);
+@import url(./__button-like/element__button-like_active.css);
+
 
 .element{
     background: #FFFFFF;
     border-radius: 10px;
     overflow: hidden;
+    position: relative;
+    max-height: 361px;
 }

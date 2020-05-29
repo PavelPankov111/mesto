@@ -1,6 +1,16 @@
 .element__button-like{
-    padding:0;
-    background: rgba(0,0,0,0.01);
-    border:none;
-    height: 19px;
+    cursor: grab;
+    margin: auto 0 auto auto;
+    align-self: start;
+   background: url(../../../images/like.svg);
+   width: 25px;
+   height: 19px;
+   border:none;
+   background-repeat: no-repeat;
+   padding: 0;
+}
+
+.element__button-like:hover{
+    opacity: .6;
+    transition: .2s;
 }
