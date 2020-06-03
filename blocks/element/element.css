@@ -6,6 +6,9 @@
 @import url(./__image/element__image.css);
 @import url(./__button-like/element__button-like.css);
 @import url(./__button-like/element__button-like_active.css);
+@import url(./__image-active/element__image-active.css);
+@import url(./__text-active/element__text-active.css);
+@import url(./__container/element__container.css);
 
 
 .element{
