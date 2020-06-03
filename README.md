@@ -33,8 +33,12 @@
   
 ### 3. javascript:
   ```javascript
-const simple = "Я просто строка!";
-console.log(simple);
+  function formSubmitHandler (evt) {
+    evt.preventDefault();
+    name.textContent = nameInput.value;
+    Input.textContent = jobInput.value;
+  }
+  
 ```
 
 ## Сайт является кроссбраузерным и работает во всех известных браузерах(Safari,Яндекс Браузер,Google Chrome,Firefox)

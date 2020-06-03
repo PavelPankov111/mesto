@@ -4,6 +4,7 @@
     border-radius: 10px;    
     width: 430px;
     height: 330px;
+<<<<<<< HEAD
     display: none;
     align-items: center;
     justify-content: center;
@@ -12,6 +13,13 @@
     position: relative;
     min-width:250px;
     min-height: 192px;
+=======
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    top:6%;
+    position: relative;
+>>>>>>> master
 }
 
 @media screen and (max-width : 620px){
@@ -21,18 +29,30 @@
     }
 }
 
+<<<<<<< HEAD
 @media screen and (max-width : 425px){
     .popup__container{
         top:3%;
         width: 78.35vw;
         height: 60vw;
+=======
+
+@media screen and (max-width : 425px){
+    .popup__container{
+        width:78.35vw;
+        height: 60vw;
+        top:3%;
+>>>>>>> master
     }
 }
 
 @media screen and (max-width : 375px){
     .popup__container{
         top:0;
+<<<<<<< HEAD
         width: 78.35vw;
         height: 60vw;
+=======
+>>>>>>> master
     }
 }

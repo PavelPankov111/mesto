@@ -1,14 +1,21 @@
-
 @import url(./__container/popup__container.css);
 @import url(./__button/popup__button.css);
 @import url(./__title/popup__title.css);
 @import url(./__inputs/popup__inputs.css);
 @import url(./__content/popup__content.css);
-@import url(./__line/popup__line.css);
-@import url(./__button-title/popup__button-title.css);
 @import url(./__vector/popup__vector.css);
 @import url(./__input/popup__input.css);
-@import url(./__input-name/popup__input-name.css);
+@import url(./__vector-button/popup__vector-button.css);
+@import url(./__pluse/popup__pluse.css);
+@import url(./__pluse-container/popup__pluse-container.css);
+@import url(./__pluse-button/popup__pluse-button.css);
+@import url(./__vector-pluse/popup__vector-pluse.css);
+@import url(./__content-pluse/popup__content-pluse.css);
+@import url(./__pluse-title/popup__pluse-title.css);
+@import url(./__input-pluse/popup__input-pluse.css);
+@import url(./__inputs-pluse/popup__inputs-pluse.css);
+@import url(./__input-pllink/popup__input-pllink.css);
+
 
 
 .popup{
@@ -18,7 +25,9 @@
     bottom: 0;
     justify-content: center;
     align-items: center;
-    display: flex;
+    display: none;
     background: rgba(0,0,0,0);
-    position:initial;
+    position: fixed;
+    z-index: 5;
 }
+
