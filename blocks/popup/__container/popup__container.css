@@ -4,11 +4,14 @@
     border-radius: 10px;    
     width: 430px;
     height: 330px;
-    display:flex;
+    display: none;
     align-items: center;
     justify-content: center;
-    top:6%;
+    top: 6%;
+    z-index: 5;
     position: relative;
+    min-width:250px;
+    min-height: 192px;
 }
 
 @media screen and (max-width : 620px){
@@ -18,17 +21,18 @@
     }
 }
 
-
 @media screen and (max-width : 425px){
     .popup__container{
-        width:78.35vw;
-        height: 60vw;
         top:3%;
+        width: 78.35vw;
+        height: 60vw;
     }
 }
 
 @media screen and (max-width : 375px){
     .popup__container{
         top:0;
+        width: 78.35vw;
+        height: 60vw;
     }
 }
