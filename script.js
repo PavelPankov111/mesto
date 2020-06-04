@@ -3,13 +3,13 @@ const formPopup =  document.querySelector('.popup');
 const nameInput = document.querySelector('.popup__input_name');
 const jobInput = document.querySelector('.popup__input_job');
 const name = document.querySelector('.profile__title');
-const Input = document.querySelector('.profile__subtitle');
+const input = document.querySelector('.profile__subtitle');
 const save =  document.querySelector('.popup__button');
 const formElement = document.querySelector('.popup__container');
 const close = document.querySelector('.popup__vector');
 const pluse = document.querySelector('.profile__button-add');
 const pluseForm =  document.querySelector('.popup__pluse'); 
-const Elements = document.querySelector('.elements');
+const elements = document.querySelector('.elements');
 const elementTemplate = document.querySelector('.element__template').content;
 const closePlusebutton = document.querySelector('.popup__vector-pluse');
 const inputPluseName = document.querySelector('.popup__input-pluse');
@@ -52,7 +52,7 @@ const initialCards = [
 function showClick () {
     formPopup.classList.add('popup_opened');
     nameInput.value = name.textContent
-    jobInput.value =  Input.textContent
+    jobInput.value =  input.textContent
 }
     
 buttonEdit.addEventListener('click', showClick);
@@ -66,7 +66,7 @@ close.addEventListener('click', closePopup);
  function formSubmitHandler (evt) {
     evt.preventDefault();
     name.textContent = nameInput.value;
-    Input.textContent = jobInput.value;
+    input.textContent = jobInput.value;
     closePopup();
 }
 
@@ -123,7 +123,7 @@ function addNewTempalte(item){
     ElementTrash.remove()
     });
 
-    Elements.prepend(template);
+    elements.prepend(template);
 
     elementImage.addEventListener('click', function(){
         elementOpened.classList.add('popup_opened');
