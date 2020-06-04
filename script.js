@@ -11,13 +11,13 @@ const formPopup =  document.querySelector('.popup');
 const nameInput = document.querySelector('.popup__input_name');
 const jobInput = document.querySelector('.popup__input_job');
 const name = document.querySelector('.profile__title');
-const Input = document.querySelector('.profile__subtitle');
+const input = document.querySelector('.profile__subtitle');
 const save =  document.querySelector('.popup__button');
 const formElement = document.querySelector('.popup__container');
 const close = document.querySelector('.popup__vector');
 const pluse = document.querySelector('.profile__button-add');
 const pluseForm =  document.querySelector('.popup__pluse'); 
-const Elements = document.querySelector('.elements');
+const elements = document.querySelector('.elements');
 const elementTemplate = document.querySelector('.element__template').content;
 const closePlusebutton = document.querySelector('.popup__vector-pluse');
 const inputPluseName = document.querySelector('.popup__input-pluse');
@@ -57,7 +57,7 @@ const initialCards = [
 function showClick () {
     formPopup.classList.add('popup_opened');
     nameInput.value = name.textContent
-    jobInput.value =  Input.textContent
+    jobInput.value =  input.textContent
 }
     
 buttonEdit.addEventListener('click', showClick);
@@ -71,7 +71,7 @@ close.addEventListener('click', closePopup);
  function formSubmitHandler (evt) {
     evt.preventDefault();
     name.textContent = nameInput.value;
-    Input.textContent = jobInput.value;
+    input.textContent = jobInput.value;
     closePopup();
 }
 
@@ -91,7 +91,13 @@ function renderTemplate(item){
     elementTrashtemplate.addEventListener('click', (evt) => {
         const ElementTrash = evt.target.closest('.element');
 
+<<<<<<< HEAD
         const index = initialCards.indexOf(item);
+=======
+function addNewCard(){
+    const link =  inputPluseLink.value;
+    const name = inputPluseName.value;
+>>>>>>> elements/alt
 
         initialCards.splice(index, 1);
 
@@ -108,6 +114,7 @@ function renderTemplate(item){
 
 initialCards.forEach(renderTemplate);
 
+<<<<<<< HEAD
 
 function showPluse(){
     pluseForm.classList.add('popup_opened');
@@ -117,6 +124,20 @@ pluse.addEventListener('click', showPluse);
 
 function closePluse(){
     pluseForm.classList.remove('popup_opened');
+=======
+    elementTitle.textContent = item.name;
+    elementImage.src = item.link;
+    elementImage.alt = item.name;
+
+    elButLike.addEventListener('click', (event) => event.target.classList.toggle('element__button-like_active'));
+    
+    elementTrashtemplate.addEventListener('click', (evt) => {
+    const elementTrash = evt.target.closest('.element');
+    elementTrash.remove()
+    });
+
+    elements.prepend(template);
+>>>>>>> elements/alt
 }
 
 closePlusebutton.addEventListener('click', closePluse);
