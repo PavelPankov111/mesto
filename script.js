@@ -18,6 +18,8 @@ const formAddpluse = document.querySelector('.popup__pluse-container');
 const elementImgActive = document.querySelector('.element__image-active');
 const elementTextActive = document.querySelector('.element__text-active');
 const elementOpened =  document.querySelector('.element__opened');
+const vectorClose =  document.querySelector('.element__vector-close');
+
 
 
 const initialCards = [
@@ -127,6 +129,10 @@ function addNewTempalte(item){
         elementImgActive.src = elementImage.src;
         elementImgActive.alt = elementImage.alt;
         elementTextActive.textContent = elementTitle.textContent;
+    });
+
+    vectorClose.addEventListener('click', function(){
+        elementOpened.classList.remove('popup_opened');
     });
 }
 
