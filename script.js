@@ -21,7 +21,7 @@ const Elements = document.querySelector('.elements');
 const elementTemplate = document.querySelector('.element__template').content;
 const closePlusebutton = document.querySelector('.popup__vector-pluse');
 const inputPluseName = document.querySelector('.popup__input-pluse');
-const inputPluseLink = document.querySelector('.popup__input-pllink');
+const inputPluseLinl = document.querySelector('.popup__input-pllink');
 const formAddpluse = document.querySelector('.popup__pluse-container');
 
 
@@ -77,11 +77,43 @@ close.addEventListener('click', closePopup);
 
 formElement.addEventListener('submit', formSubmitHandler);
 
+
+function renderTemplate(item){
+    const template = elementTemplate.cloneNode(true);
+
+    const elementImage = template.querySelector('.element__image'); 
+    const elementTitle = template.querySelector('.element__title');
+    const elButLike = template.querySelector('.element__button-like');
+    const elementTrashtemplate = template.querySelector('.element__trashs');
+
+    elButLike.addEventListener('click', (event) => event.target.classList.toggle('element__button-like_active'));
+
+    elementTrashtemplate.addEventListener('click', (evt) => {
+        const ElementTrash = evt.target.closest('.element');
+
+        const index = initialCards.indexOf(item);
+
+        initialCards.splice(index, 1);
+
+        ElementTrash.remove()
+    })
+
+    elementImage.src = item.link; 
+    elementTitle.textContent = item.name; 
+
+    Elements.prepend(template);
+
+    return item;
+}
+
+initialCards.forEach(renderTemplate);
+
+
 function showPluse(){
     pluseForm.classList.add('popup_opened');
 }
 
-pluse.addEventListener( 'click', showPluse);
+pluse.addEventListener('click', showPluse);
 
 function closePluse(){
     pluseForm.classList.remove('popup_opened');
@@ -89,52 +121,23 @@ function closePluse(){
 
 closePlusebutton.addEventListener('click', closePluse);
 
-function renderTemplate(item){
-    const link = item.link; 
-    const name = item.name;
-    addNewTempalte(link, name);
-}
+formAddpluse.addEventListener('submit', function(evt){
+    const cloneTemplate = elementTemplate.cloneNode(true);
 
-function addNewCard (){
-    const link =  inputPluseLink.value;
-    const name = inputPluseName.value;
+    const templateTitle= cloneTemplate.querySelector('.element__title'); 
+    const templateImahe = cloneTemplate.querySelector('.element__image'); 
 
-    const object = {
-        link: link,
-        name: name
-      };
+    const ImageTitle = (inputPluseName.value, inputPluseLinl.value);
+
+    evt.preventDefault();
+    
+    templateTitle.textContent = inputPluseName.value;
+    templateImahe.src = inputPluseLinl.value;
 
     inputPluseName.value = '';
-    inputPluseLink.value = '';
+    inputPluseLinl.value = '';
 
-    addNewTempalte(object)
-}
-
-function addNewTempalte(item){
-    const template = elementTemplate.cloneNode(true);
-    const elementImage = template.querySelector('.element__image'); 
-    const elementTitle = template.querySelector('.element__title');
-    const elButLike = template.querySelector('.element__button-like');
-    const elementTrashtemplate = template.querySelector('.element__trashs');
-
-    elementTitle.textContent = item.name;
-    elementImage.src = item.link;
-
-    elButLike.addEventListener('click', (event) => event.target.classList.toggle('element__button-like_active'));
-    
-    elementTrashtemplate.addEventListener('click', (evt) => {
-    const ElementTrash = evt.target.closest('.element');
-    ElementTrash.remove()
-    });
-
-    Elements.prepend(template);
-}
-
- initialCards.forEach(addNewTempalte);
-
- formAddpluse.addEventListener('submit', function(evt){  
-    evt.preventDefault();
-    addNewCard();
+    Elements.prepend(cloneTemplate);
     closePluse();
-});
- 
+
+})
