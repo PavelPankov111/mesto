@@ -114,7 +114,7 @@ function addNewTempalte(item){
 
     elementTitle.textContent = item.name;
     elementImage.src = item.link;
-    elementTitle.alt = elementTitle.name;
+    elementImage.alt = item.name;
 
     elButLike.addEventListener('click', (event) => event.target.classList.toggle('element__button-like_active'));
     
