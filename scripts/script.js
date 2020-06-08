@@ -49,36 +49,41 @@ const initialCards = [
     }
 ];
 
-function showClick () {
+function openPopup(){
     formPopup.classList.toggle('popup_opened');
+}
+
+function showClick () {
+    openPopup();
     nameInput.value = name.textContent
     jobInput.value =  input.textContent
 }
+
 buttonEdit.addEventListener('click', showClick);
-close.addEventListener('click', showClick);
+close.addEventListener('click', openPopup);
 
 
  function formSubmitHandler (evt) {
     evt.preventDefault();
     name.textContent = nameInput.value;
     input.textContent = jobInput.value;
-    showClick();
+    openPopup();
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
 
-function showPluse(){
+function openPlus(){
     pluseForm.classList.toggle('popup_opened');
 }
 
-pluse.addEventListener( 'click', showPluse);
-closePlusebutton.addEventListener('click', showPluse);
+pluse.addEventListener('click', openPlus);
+closePlusebutton.addEventListener('click', openPlus);
 
-function getCard(template, elements){
+function renderTemplate(template, elements){
     elements.prepend(template);
 }
 
-function addNewTempalte(item){
+function getCard(item){
     const template = elementTemplate.cloneNode(true);
     const elementImage = template.querySelector('.element__image'); 
     const elementTitle = template.querySelector('.element__title');
@@ -88,7 +93,9 @@ function addNewTempalte(item){
     elementTitle.textContent = item.name;
     elementImage.src = item.link;
 
-    elButLike.addEventListener('click', (event) => event.target.classList.toggle('element__button-like_active'));
+    elButLike.addEventListener('click', function addLike (event) {
+        event.target.classList.toggle('element__button-like_active')
+    });
     
     elementTrashtemplate.addEventListener('click', (evt) => {
     const elementTrash = evt.target.closest('.element');
@@ -111,8 +118,8 @@ function addNewTempalte(item){
 }
 
  initialCards.forEach((object) => {
-    const card = addNewTempalte(object) 
-    getCard(card, elements) 
+    const card = getCard(object)
+    renderTemplate(card, elements) 
  });
 
 
@@ -127,8 +134,8 @@ function addNewTempalte(item){
       inputPluseName.value = '';
       inputPluseLink.value = '';
 
-      showPluse();
-      const card = addNewTempalte(object) 
-      getCard(card , elements) 
+      openPlus();
+      const card = getCard(object) 
+      renderTemplate(card , elements) 
 });
  
