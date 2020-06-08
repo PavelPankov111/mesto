@@ -19,5 +19,7 @@
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    max-height: 361px;
+    height: 362px;
+    display: flex;
+    flex-direction: column;
 }

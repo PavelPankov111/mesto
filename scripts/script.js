@@ -50,59 +50,32 @@ const initialCards = [
 ];
 
 function showClick () {
-    formPopup.classList.add('popup_opened');
+    formPopup.classList.toggle('popup_opened');
     nameInput.value = name.textContent
     jobInput.value =  input.textContent
 }
-    
 buttonEdit.addEventListener('click', showClick);
+close.addEventListener('click', showClick);
 
-function closePopup(){
-    formPopup.classList.remove('popup_opened');
-}
-
-close.addEventListener('click', closePopup);
 
  function formSubmitHandler (evt) {
     evt.preventDefault();
     name.textContent = nameInput.value;
     input.textContent = jobInput.value;
-    closePopup();
+    showClick();
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
 
 function showPluse(){
-    pluseForm.classList.add('popup_opened');
+    pluseForm.classList.toggle('popup_opened');
 }
 
 pluse.addEventListener( 'click', showPluse);
+closePlusebutton.addEventListener('click', showPluse);
 
-function closePluse(){
-    pluseForm.classList.remove('popup_opened');
-}
-
-closePlusebutton.addEventListener('click', closePluse);
-
-function renderTemplate(item){
-    const link = item.link; 
-    const name = item.name;
-    addNewTempalte(link, name);
-}
-
-function addNewCard (){
-    const link =  inputPluseLink.value;
-    const name = inputPluseName.value;
-
-    const object = {
-        link: link,
-        name: name
-      };
-
-    inputPluseName.value = '';
-    inputPluseLink.value = '';
-
-    addNewTempalte(object)
+function getCard(template, elements){
+    elements.prepend(template);
 }
 
 function addNewTempalte(item){
@@ -114,34 +87,48 @@ function addNewTempalte(item){
 
     elementTitle.textContent = item.name;
     elementImage.src = item.link;
-    elementImage.alt = item.name;
 
     elButLike.addEventListener('click', (event) => event.target.classList.toggle('element__button-like_active'));
     
     elementTrashtemplate.addEventListener('click', (evt) => {
-    const ElementTrash = evt.target.closest('.element');
-    ElementTrash.remove()
+    const elementTrash = evt.target.closest('.element');
+    elementTrash.remove()
+    
     });
 
-    elements.prepend(template);
-
-    elementImage.addEventListener('click', function(){
+    elementImage.addEventListener('click', function () {
         elementOpened.classList.add('popup_opened');
         elementImgActive.src = elementImage.src;
         elementImgActive.alt = elementImage.alt;
         elementTextActive.textContent = elementTitle.textContent;
-    });
+    })
 
-    vectorClose.addEventListener('click', function(){
-        elementOpened.classList.remove('popup_opened');
-    });
+    vectorClose.addEventListener('click', function (){
+        elementOpened.classList.remove('popup_opened');    // здесь нельзя использовать toggle, ломается функционал 
+    })
+
+    return template;
 }
 
- initialCards.forEach(addNewTempalte);
+ initialCards.forEach((object) => {
+    const card = addNewTempalte(object) 
+    getCard(card, elements) 
+ });
+
 
  formAddpluse.addEventListener('submit', function(evt){  
     evt.preventDefault();
-    addNewCard();
-    closePluse();
+    const object = {
+    link: inputPluseLink.value,
+    name: inputPluseName.value
+
+      };
+
+      inputPluseName.value = '';
+      inputPluseLink.value = '';
+
+      showPluse();
+      const card = addNewTempalte(object) 
+      getCard(card , elements) 
 });
  

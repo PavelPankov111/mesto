@@ -10,7 +10,7 @@
     width: 19px;
     height: 19px;
     background-repeat: no-repeat;
-    cursor: grab;
+    cursor: pointer;
 }
 
 .element__trashs:hover{

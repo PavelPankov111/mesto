@@ -6,7 +6,7 @@
     margin-bottom: 12px;
     background: black;
     padding: 0;
-    cursor: grab;
+    cursor: pointer;
 }
 
 .profile__edit-button:hover{
