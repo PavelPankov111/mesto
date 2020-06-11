@@ -50,38 +50,27 @@ const initialCards = [
 ];
 
 
-function togglePopup(popup) {
+function  togglePopup(popup) {
     popup.classList.toggle('popup_opened');
   }
 
-  const getToggleForPopup = (popup) => { 
-    return function() {
-      togglePopup(popup)
-    }
-  }
-  
-  const elementPlusHandler = getToggleForPopup(plusForm);
-  plus.addEventListener('click', elementPlusHandler) 
+  plus.addEventListener('click', () => togglePopup(plusForm));
 
-  const elementPlusHandlerClose = getToggleForPopup (plusForm); 
-  closePlusButton.addEventListener('click', elementPlusHandlerClose); 
+  closePlusButton.addEventListener('click', () => togglePopup(plusForm));
 
-    const elementProfileHandler = () => {
-            togglePopup(formPopup);
-            nameInput.value = name.textContent;
-            jobInput.value = input.textContent;
-      }
-    
-    buttonEdit.addEventListener('click', elementProfileHandler); 
+    buttonEdit.addEventListener('click',() => {
+        togglePopup(formPopup);
+        nameInput.value = name.textContent;
+        jobInput.value = input.textContent;
+  }); 
 
-  const elementProfileHandlerClose = getToggleForPopup(formPopup); 
-  close.addEventListener('click', elementProfileHandlerClose); 
+  close.addEventListener('click', () => togglePopup(formPopup));
 
  function formSubmitHandler (evt) {
     evt.preventDefault();
     name.textContent = nameInput.value;
     input.textContent = jobInput.value;
-    elementProfileHandlerClose();
+    togglePopup(formPopup);
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
@@ -143,7 +132,6 @@ function getCard(item){
 
       const card = getCard(object) 
       renderTemplate(card , elements) 
-      elementPlusHandlerClose();
+      togglePopup(plusForm);
 });
  
-
