@@ -72,7 +72,6 @@ function togglePopup(popup) {
 
 closePlusButton.addEventListener('click', () => {
   togglePopup(plusForm);
-  resetForm();
 })
 
 
