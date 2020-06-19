@@ -50,30 +50,99 @@ const initialCards = [
 ];
 
 
-function  togglePopup(popup) {
+const obj = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+ }
+ 
+ enableValidation(obj);
+ 
+
+function togglePopup(popup) {
     popup.classList.toggle('popup_opened');
   }
 
-  plus.addEventListener('click', () => togglePopup(plusForm));
+  plus.addEventListener('click', () =>{
+    togglePopup(plusForm)
+});
 
-  closePlusButton.addEventListener('click', () => togglePopup(plusForm));
+closePlusButton.addEventListener('click', () => {
+  togglePopup(plusForm);
+  resetForm();
+})
+
+
+//скрыввем попап кликом на оверлей
+
+function closePupupProfile(e) {
+    if (e.target.classList.contains('popup')) {
+        formPopup.classList.remove('popup_opened')
+  }
+} 
+
+formPopup.addEventListener('click', closePupupProfile)
+
+function closeImageZoom(e) {
+    if (e.target.classList.contains('element__opened')) {
+        elementOpened.classList.remove('popup_opened')
+  }
+} 
+
+elementOpened.addEventListener('click', closeImageZoom)
+
+function closePupupAddCard(e) {
+    if (e.target.classList.contains('popup__pluse')) {
+        plusForm.classList.remove('popup_opened')
+  }
+} 
+
+plusForm.addEventListener('click', closePupupAddCard)
+
+//скрывваем попапа кликом на Esc
+
+   document.addEventListener('keydown', function (evt) {
+    if (evt.key === "Escape"){
+        plusForm.classList.remove('popup_opened');
+    }});
+
+    document.addEventListener('keydown', function (evt) {
+        if (evt.key === "Escape"){
+            formPopup.classList.remove('popup_opened');
+        }});
+
+        document.addEventListener('keydown', function (evt) {
+            if (evt.key === "Escape"){
+                elementOpened.classList.remove('popup_opened');
+            }});
+        
+        
+
 
     buttonEdit.addEventListener('click',() => {
         togglePopup(formPopup);
-        nameInput.value = name.textContent;
-        jobInput.value = input.textContent;
-  }); 
 
-  close.addEventListener('click', () => togglePopup(formPopup));
+        if (formPopup.classList.contains('popup_opened')) {
+            nameInput.value = name.textContent;
+            jobInput.value = input.textContent;
+            enableValidation(obj)
+        }
+    })
+   
+    close.addEventListener('click', () => togglePopup(formPopup));
 
- function formSubmitHandler (evt) {
-    evt.preventDefault();
-    name.textContent = nameInput.value;
-    input.textContent = jobInput.value;
-    togglePopup(formPopup);
-}
-
-formElement.addEventListener('submit', formSubmitHandler);
+    function formSubmitHandler (evt) {
+       evt.preventDefault();
+       name.textContent = nameInput.value;
+       input.textContent = jobInput.value;
+       togglePopup(formPopup);
+   }
+   
+   formElement.addEventListener('submit', formSubmitHandler);
+   
 
 function renderTemplate(template, elements){
     elements.prepend(template);
@@ -107,7 +176,7 @@ function getCard(item){
     })
 
     vectorClose.addEventListener('click', function (){
-        elementOpened.classList.remove('popup_opened');    // здесь нельзя использовать toggle, ломается функционал 
+        elementOpened.classList.remove('popup_opened');   
     })
 
     return template;
@@ -124,14 +193,14 @@ function getCard(item){
     const object = {
     link: inputPlusLink.value,
     name: inputPlusName.value
+    };
+    
+    inputPlusName.value = '';
+    inputPlusLink.value = '';
 
-      };
-
-      inputPlusName.value = '';
-      inputPlusLink.value = '';
-
-      const card = getCard(object) 
-      renderTemplate(card , elements) 
-      togglePopup(plusForm);
+    const card = getCard(object) 
+    renderTemplate(card , elements) 
+    togglePopup(plusForm);
 });
  
+  
