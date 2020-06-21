@@ -1,15 +1,15 @@
-.popup__vector-pluse{
+.popup-pluse__vector{
     min-width: 37px;
     min-height: 37px;
 }
 
-.popup__vector-pluse:hover{
+.popup-pluse__vector:hover{
     opacity: .6;
     transition: .2s;
 }
 
 @media screen and (max-width : 620px){
-    .popup__vector-pluse{
+    .popup-pluse__vector{
         width: 37px;
         height: 37px;
     }

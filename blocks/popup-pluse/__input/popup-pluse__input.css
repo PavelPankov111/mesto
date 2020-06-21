@@ -1,4 +1,4 @@
-.popup__input-pluse{
+.popup-pluse__input{
     border: none;
     border-bottom: 1px solid rgba(0,0,0,0.5);
     font-weight: normal;
@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width : 620px){
-    .popup__input-pluse{
+    .popup-pluse__input{
         font-size: 12px;
         line-height: 15px;
     }   

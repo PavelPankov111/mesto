@@ -50,29 +50,29 @@
 
                 
             </div>
-           <button type="submit" class="popup__button popup__button popup__button_disabled">
+           <button type="submit" class="popup__button popup__button_disabled">
             Сохранить
            </button>
            </div>
         </form>
     </div>
-<div class="popup__pluse">
-    <form id="popupPluse" name="pluseForm" class="form popup__pluse-container popup__form" novalidate>
+<div class="popup-pluse">
+    <form id="popupPluse" name="pluseForm" class="form popup-pluse__container popup__form" novalidate>
         <button type="reset" class="popup__vector-button">
-            <img class="popup__vector-pluse" src="./images/close__icon.svg" alt="кнопка закрытия">
+            <img class="popup-pluse__vector" src="./images/close__icon.svg" alt="кнопка закрытия">
             </button>
-            <div class="popup__content-pluse">
-                <h3 class="popup__pluse-title">Новое место</h3>
-                <div class="popup__inputs-pluse">
-                <input type="text" autocomplete="off" id="name-card" name="name" class="popup__input-pluse popup__input" placeholder="Название" required minlength="1" maxlength="30"> 
+            <div class="popup-pluse__content">
+                <h3 class="popup-pluse__title">Новое место</h3>
+                <div class="popup-pluse__inputs">
+                <input type="text" autocomplete="off" id="name-card" name="name" class="popup-pluse__input popup__input" placeholder="Название" required minlength="1" maxlength="30"> 
 
                 <span id="name-card-error" class="error"></span>
 
-                <input  type="url" autocomplete="off" id="link" name="link" class="popup__input popup__input-pllink" placeholder="Ссылка на картинку" required> 
+                <input  type="url" autocomplete="off" id="link" name="link" class="popup__input  popup-pluse__input-link" placeholder="Ссылка на картинку" required> 
 
                 <span id="link-error" class="error"></span>
             </div>
-            <button type="submit" class="popup__pluse-button popup__button popup__button_disabled"> 
+            <button type="submit" class="popup__button popup-pluse__button popup__button_disabled"> 
                Создать
             </button>
             </div>
@@ -90,16 +90,17 @@
         </div>
     </div>
     </template>
-    <div class="element__opened">
-        <div class="element__container">
-        <img class="element__image-active" src="" alt="">
-        <h2 class="element__text-active"></h2> 
-        <button type="reset" class="element__vector-button">
-            <img class="element__vector-close" src="./images/close__icon.svg" alt="кнопка закрытия">
+    <div class="popup__element-opened">
+        <div class="popup__element-container">
+        <img class="popup__element-image" src="" alt="">
+        <h2 class="popup__element-text"></h2> 
+        <button type="reset" class="popup__vector-button">
+            <img class="popup__vector-element" src="./images/close__icon.svg" alt="кнопка закрытия">
         </button>
     </div>
     </div>
 </div>
+<script src="./scripts/initialCards.js"></script>
 <script src="./scripts/validation.js">
 </script>
 <script src="./scripts/script.js">
