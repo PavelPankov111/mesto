@@ -102,11 +102,11 @@ function closePupupAddCard(e) {
 
 plusForm.addEventListener('click', closePupupAddCard)
 
-    buttonEdit.addEventListener('click',() => {
+    buttonEdit.addEventListener('click', (inactiveButtonClass) => {
         openPopup(formPopup);
         nameInput.value = profileTitle.textContent;
         jobInput.value = profileSubtitle.textContent;
-        popupProfileButton.classList.remove('popup__button_disabled')
+        popupProfileButton.classList.remove(config.inactiveButtonClass)
     })
    
     closeButton.addEventListener('click', () => {
@@ -171,7 +171,7 @@ vectorClose.addEventListener('click', () =>
  });
 
 
- formAddPlus.addEventListener('submit', function(evt){  
+ formAddPlus.addEventListener('submit', function(evt, inactiveButtonClass){  
     evt.preventDefault();
     const object = {
     link: inputPlusLink.value,
@@ -182,7 +182,7 @@ vectorClose.addEventListener('click', () =>
     inputPlusName.value = '';
     inputPlusLink.value = '';
 
-    popupPluseButton.classList.add('popup__button_disabled')
+    popupPluseButton.classList.add(config.inactiveButtonClass)
     const card = getCard(object) 
     renderTemplate(card , elements) 
     closePopup(plusForm);
