@@ -12,9 +12,9 @@ const removeErrors = (formElement, inputElement, inputErrorClass) => {
 
 const checkValidation = (formElement, inputElement, inputErrorClass) => {
     if (!inputElement.validity.valid) {
-        renderErrors(formElement, inputElement, inputElement.validationMessage, config.inputErrorClass);
+        renderErrors(formElement, inputElement, inputElement.validationMessage, inputErrorClass);
     } else {
-        removeErrors(formElement, inputElement, config.inputErrorClass);
+        removeErrors(formElement, inputElement, inputErrorClass);
     }
 };
 
@@ -27,7 +27,7 @@ const handleButton = (inputs, popupButton, inactiveButtonClass) => {
     }
 };
 
-const setEventListeners = (formElement, config, inputSelector, submitButtonSelector, inputErrorClass, inactiveButtonClass) => {
+const setEventListeners = (formElement,  inputErrorClass) => {
     const inputs = Array.from(formElement.querySelectorAll(config.inputSelector));
     const popupButton = formElement.querySelector(config.submitButtonSelector);
     handleButton(inputs, popupButton, config.inactiveButtonClass);
@@ -45,7 +45,7 @@ const enableValidation = (config) => {
         formElement.addEventListener('submit', function (evt) {
             evt.preventDefault();
         });
-        setEventListeners(formElement, config);
+        setEventListeners(formElement, config.inputErrorClass);
     });
 };
 
