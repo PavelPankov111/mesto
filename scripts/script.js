@@ -64,8 +64,9 @@ const config = {
 
 profileButtonPlus.addEventListener('click', () => {
     openPopup(plusForm) 
-
+    cleaningForms(config.inputSelector, config.inputErrorClass, plusForm)
 });
+
 closePlusButton.addEventListener('click', () => {
     closePopup(plusForm);
     
