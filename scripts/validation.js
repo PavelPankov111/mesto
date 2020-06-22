@@ -27,7 +27,7 @@ const handleButton = (inputs, popupButton, inactiveButtonClass) => {
     }
 };
 
-const setEventListeners = (formElement,  inputErrorClass) => {
+const setEventListeners = (formElement,  inputErrorClass, config) => {
     const inputs = Array.from(formElement.querySelectorAll(config.inputSelector));
     const popupButton = formElement.querySelector(config.submitButtonSelector);
     handleButton(inputs, popupButton, config.inactiveButtonClass);
@@ -45,7 +45,7 @@ const enableValidation = (config) => {
         formElement.addEventListener('submit', function (evt) {
             evt.preventDefault();
         });
-        setEventListeners(formElement, config.inputErrorClass);
+        setEventListeners(formElement, config.inputErrorClass, config);
     });
 };
 

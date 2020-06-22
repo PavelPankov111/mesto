@@ -31,7 +31,7 @@ const config = {
  }
  
  
- const cleaningForms = (inputSelector, inputErrorClass, form) => {
+ const cleaningForms = (config, inputSelector, inputErrorClass, form) => {
     form.querySelectorAll('.error').forEach((span) => {
       span.textContent = "";
     });
@@ -64,7 +64,7 @@ const config = {
 
 profileButtonPlus.addEventListener('click', () => {
     openPopup(plusForm) 
-    cleaningForms(config.inputSelector, config.inputErrorClass, plusForm)
+    cleaningForms(config ,config.inputSelector, config.inputErrorClass, plusForm)
 });
 
 closePlusButton.addEventListener('click', () => {
@@ -83,7 +83,7 @@ function closePopupProfile(e) {
 formPopup.addEventListener('click', closePopupProfile)
 
 function closeImageZoom(e) {
-    if (e.target.classList.contains('popup__element-opened')) {
+    if (e.target.classList.contains('popup-element')) {
         closePopup(elementImageOpened)
   }
 } 
@@ -98,12 +98,12 @@ function closePupupAddCard(e) {
 
 plusForm.addEventListener('click', closePupupAddCard)
 
-    buttonEdit.addEventListener('click', (inactiveButtonClass) => {
+    buttonEdit.addEventListener('click', () => {
         openPopup(formPopup);
         nameInput.value = profileTitle.textContent;
         jobInput.value = profileSubtitle.textContent;
         popupProfileButton.classList.remove(config.inactiveButtonClass);
-        cleaningForms(config.inputSelector, config.inputErrorClass, formElement);
+        cleaningForms(config ,config.inputSelector, config.inputErrorClass, formElement);
     })
    
     closeButton.addEventListener('click', () => {
@@ -181,7 +181,7 @@ vectorClose.addEventListener('click', () =>
     const card = getCard(object) 
     renderTemplate(card , elements) 
     closePopup(plusForm);
-    cleaningForms(config.inputSelector, config.inputErrorClass, formAddPlus);
+    cleaningForms(config ,config.inputSelector, config.inputErrorClass, formAddPlus);
     resetForms(formAddPlus)  
 });
 
