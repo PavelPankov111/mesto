@@ -8,6 +8,7 @@
     background: black;
     padding: 0;
     cursor: pointer;
+    outline: none
 }
 
 .profile__button-add:hover{

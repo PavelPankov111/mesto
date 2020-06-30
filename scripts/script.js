@@ -23,7 +23,7 @@ const popupProfileButton = document.querySelector('.popup__button');
 
 
 const config = {
-    formSelector: '.popup__form',
+    form: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__button',
     inactiveButtonClass: 'popup__button_disabled',
@@ -120,50 +120,13 @@ plusForm.addEventListener('click', closePupupAddCard)
    
    formElement.addEventListener('submit', formSubmitHandler);
    
-
-function renderTemplate(template, elements){
-    elements.prepend(template);
-}
-
-function getCard(item){
-    const template = elementTemplate.cloneNode(true);
-    const elementImage = template.querySelector('.element__image'); 
-    const elementTitle = template.querySelector('.element__title');
-    const elButLike = template.querySelector('.element__button-like');
-    const elementTrashtemplate = template.querySelector('.element__trashs');
-
-    elementTitle.textContent = item.name;
-    elementImage.src = item.link;
-
-    elButLike.addEventListener('click', function addLike (event) {
-        event.target.classList.toggle('element__button-like_active')
-    });
-    
-    elementTrashtemplate.addEventListener('click', (evt) => {
-    const elementTrash = evt.target.closest('.element');
-    elementTrash.remove()
-    
-    });
-
-    elementImage.addEventListener('click', function () {
-        openPopup(elementImageOpened)
-        elementImgActive.src = elementImage.src;
-        elementImgActive.alt = elementImage.alt;
-        elementTextActive.textContent = elementTitle.textContent;
-    })
-
-    return template;
-}
-
 vectorClose.addEventListener('click', () => 
     closePopup(elementImageOpened)
 ); 
 
-
- initialCards.forEach((object) => {
-    const card = getCard(object)
-    renderTemplate(card, elements) 
- });
+ initialCards.forEach( (item) => {
+    new Card(item, `element-template`).renderTemplate();
+});
 
 
  formAddPlus.addEventListener('submit', function(evt){  
@@ -173,17 +136,21 @@ vectorClose.addEventListener('click', () =>
     name: inputPlusName.value
     };
     
-    
     inputPlusName.value = '';
     inputPlusLink.value = '';
 
     popupPluseButton.classList.add(config.inactiveButtonClass)
-    const card = getCard(object) 
-    renderTemplate(card , elements) 
+    new Card(object ,`element-template`).renderTemplate();
+
     closePopup(plusForm);
+    
+
     cleaningForms(config ,config.inputSelector, config.inputErrorClass, formAddPlus);
     resetForms(formAddPlus)  
 });
 
 
-enableValidation(config)
+// enableValidation(config)
+new FormValidator(config, '.popup__container').enableValidation()
+new FormValidator(config, '.popup-pluse__container').enableValidation()
+

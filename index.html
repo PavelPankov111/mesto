@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./pages/index.css">
+    <link rel="shortcut icon" href="./images/i.webp" type="image/x-icon">
     <title>Место</title>
 </head>
 <body>
     <div class="page">
-    <header class="header">
-        <img class="header__logo" alt="Место Россия" src="./images/vector.svg">
-    </header>
+        <header class="header">
+            <img class="header__logo" alt="Место Россия" src="./images/vector.svg">
+        </header>
     <section class="profile">
         <div class="profile__avatar-info">
         <img class="profile__avatar" alt="Жак-Ив Кусто" src="./images/image.png">
         <div class="profile__info">
             <div class="profile__button">
                 <h1 class="profile__title">Жак-Ив Кусто</h1>
-                <button type="button" class="profile__edit-button">
+                <button type="button" class="profile__edit-button" title="Редактировать">
                     <img class="profile__vector-button" src="./images/vector1.svg" alt="карандаш">
                 </button>
             </div>
             <p class="profile__subtitle">Исследователь океана</p>
         </div>
     </div>
-    <button type="button" class="profile__button-add">
+    <button type="button" class="profile__button-add" title="Добавить">
         <img class="profile__vector-add" src="./images/vector2.svg" alt="плюсик">
     </button>
 </section>
@@ -100,10 +101,11 @@
     </div>
     </div>
 </div>
-<script src="./scripts/initialCards.js"></script>
-<script src="./scripts/validation.js">
+<script src="./scripts/Card.js"></script>
+<script  src="./scripts/initialCards.js"></script>
+<script  src="./scripts/FormValidator.js">
 </script>
-<script src="./scripts/script.js">
+<script  src="./scripts/script.js">
 </script>
 </body>
 </html>
