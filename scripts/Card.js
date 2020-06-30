@@ -1,4 +1,4 @@
-class Card {
+export default class Card {
     constructor(item, template){
         this._item = item;
         this._template = template; 
@@ -56,3 +56,5 @@ class Card {
 
 }
 
+import openPopup from './script.js';
+import { elementImageOpened } from './script.js';

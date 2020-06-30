@@ -21,7 +21,6 @@ const elementImageOpened = document.querySelector('.popup-element');
 const popupPluseButton = document.querySelector('.popup-pluse__button'); 
 const popupProfileButton = document.querySelector('.popup__button'); 
 
-
 const config = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
@@ -45,12 +44,12 @@ const config = {
   };
   
 
- function openPopup(popup) {
+export default function openPopup(popup) {
         document.addEventListener('keyup', handleESCevent)
         popup.classList.add('popup_opened'); 
  }
 
- function closePopup(popup) {
+function closePopup(popup) {
     document.removeEventListener('keyup', handleESCevent)
     popup.classList.remove('popup_opened'); 
  }
@@ -150,7 +149,9 @@ vectorClose.addEventListener('click', () =>
 });
 
 
-// enableValidation(config)
 new FormValidator(config, formAddPlus).enableValidation()
 new FormValidator(config, formElement).enableValidation()
 
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+export {elementImageOpened}
