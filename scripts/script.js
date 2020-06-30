@@ -23,7 +23,7 @@ const popupProfileButton = document.querySelector('.popup__button');
 
 
 const config = {
-    form: '.popup__form',
+    formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__button',
     inactiveButtonClass: 'popup__button_disabled',
@@ -151,6 +151,6 @@ vectorClose.addEventListener('click', () =>
 
 
 // enableValidation(config)
-new FormValidator(config, '.popup__container').enableValidation()
-new FormValidator(config, '.popup-pluse__container').enableValidation()
+new FormValidator(config, formAddPlus).enableValidation()
+new FormValidator(config, formElement).enableValidation()
 
