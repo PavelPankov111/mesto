@@ -1,5 +1,9 @@
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+import {elementImageOpened, openPopup, closePopup} from './utilits.js'
+
 const buttonEdit = document.querySelector('.profile__edit-button');
-const formPopup =  document.querySelector('.popup');
+const profileFormPopup =  document.querySelector('.popup');
 const nameInput = document.querySelector('.popup__input_name');
 const jobInput = document.querySelector('.popup__input_job');
 const profileTitle = document.querySelector('.profile__title');
@@ -9,15 +13,11 @@ const closeButton = document.querySelector('.popup__vector');
 const profileButtonPlus = document.querySelector('.profile__button-add'); 
 const plusForm =  document.querySelector('.popup-pluse'); 
 const elements = document.querySelector('.elements');
-const elementTemplate = document.querySelector('.element-template').content;
 const closePlusButton = document.querySelector('.popup-pluse__vector');
 const inputPlusName = document.querySelector('.popup-pluse__input');
 const inputPlusLink = document.querySelector('.popup-pluse__input-link');
 const formAddPlus = document.querySelector('.popup-pluse__container');
-const elementImgActive = document.querySelector('.popup__element-image');
-const elementTextActive = document.querySelector('.popup__element-text');
 const vectorClose =  document.querySelector('.popup__vector-element');
-const elementImageOpened = document.querySelector('.popup-element'); 
 const popupPluseButton = document.querySelector('.popup-pluse__button'); 
 const popupProfileButton = document.querySelector('.popup__button'); 
 
@@ -29,41 +29,14 @@ const config = {
     inputErrorClass: 'popup__input_type_error',
  }
  
- 
- const cleaningForms = (config, inputSelector, inputErrorClass, form) => {
-    form.querySelectorAll('.error').forEach((span) => {
-      span.textContent = "";
-    });
-    form.querySelectorAll(config.inputSelector).forEach((input) => {   
-      input.classList.remove(config.inputErrorClass);
-    });
-  };
-  
   const resetForms = (element) => {
     element.reset();
   };
-  
-
-export default function openPopup(popup) {
-        document.addEventListener('keyup', handleESCevent)
-        popup.classList.add('popup_opened'); 
- }
-
-function closePopup(popup) {
-    document.removeEventListener('keyup', handleESCevent)
-    popup.classList.remove('popup_opened'); 
- }
-
- function handleESCevent(evt) {
-      if (evt.key === "Escape"){
-           const activePopup = document.querySelector('.popup_opened'); 
-           closePopup(activePopup)
-     } 
- }
 
 profileButtonPlus.addEventListener('click', () => {
     openPopup(plusForm) 
-    cleaningForms(config ,config.inputSelector, config.inputErrorClass, plusForm)
+    const validation =  new FormValidator(config, plusForm)
+    validation.cleaningForms()
 });
 
 closePlusButton.addEventListener('click', () => {
@@ -71,42 +44,30 @@ closePlusButton.addEventListener('click', () => {
     
  })
 
+ function closeByOverlayClick(e) { 
+    const openedPopup = document.querySelector('.popup_opened');
+    if (e.target.classList.contains('popup')) { 
+        closePopup(openedPopup);
+  } 
+}  
 
-function closePopupProfile(e) {
-    if (e.target.classList.contains('popup')) {
-        closePopup(formPopup)
-        
-  }
-} 
+profileFormPopup.addEventListener('mousedown', closeByOverlayClick)
 
-formPopup.addEventListener('click', closePopupProfile)
+elementImageOpened.addEventListener('mousedown', closeByOverlayClick)
 
-function closeImageZoom(e) {
-    if (e.target.classList.contains('popup-element')) {
-        closePopup(elementImageOpened)
-  }
-} 
-
-elementImageOpened.addEventListener('click', closeImageZoom)
-
-function closePupupAddCard(e) {
-    if (e.target.classList.contains('popup-pluse')) {
-        closePopup(plusForm)
-  }
-} 
-
-plusForm.addEventListener('click', closePupupAddCard)
+plusForm.addEventListener('mousedown', closeByOverlayClick)
 
     buttonEdit.addEventListener('click', () => {
-        openPopup(formPopup);
+        openPopup(profileFormPopup);
         nameInput.value = profileTitle.textContent;
         jobInput.value = profileSubtitle.textContent;
         popupProfileButton.classList.remove(config.inactiveButtonClass);
-        cleaningForms(config ,config.inputSelector, config.inputErrorClass, formElement);
+        const validation =  new FormValidator(config, formElement)
+        validation.cleaningForms()
     })
    
     closeButton.addEventListener('click', () => {
-        closePopup(formPopup);
+        closePopup(profileFormPopup);
     });
  
 
@@ -114,7 +75,7 @@ plusForm.addEventListener('click', closePupupAddCard)
        evt.preventDefault();
        profileTitle.textContent = nameInput.value;
        profileSubtitle.textContent = jobInput.value;
-       closePopup(formPopup);
+       closePopup(profileFormPopup);
    }
    
    formElement.addEventListener('submit', formSubmitHandler);
@@ -123,8 +84,12 @@ vectorClose.addEventListener('click', () =>
     closePopup(elementImageOpened)
 ); 
 
+  
+
  initialCards.forEach( (item) => {
-    new Card(item, `element-template`).renderTemplate();
+    const card = new Card(item, `element-template`);
+    const renderCard = card.getCard();
+    elements.prepend(renderCard);
 });
 
 
@@ -139,19 +104,21 @@ vectorClose.addEventListener('click', () =>
     inputPlusLink.value = '';
 
     popupPluseButton.classList.add(config.inactiveButtonClass)
-    new Card(object ,`element-template`).renderTemplate();
+    const card = new Card(object, `element-template`);
+    const renderCard = card.getCard();
+    elements.prepend(renderCard);
 
     closePopup(plusForm);
     
+    const validation =  new FormValidator(config, formAddPlus)
+    validation.cleaningForms()
 
-    cleaningForms(config ,config.inputSelector, config.inputErrorClass, formAddPlus);
     resetForms(formAddPlus)  
 });
 
 
-new FormValidator(config, formAddPlus).enableValidation()
-new FormValidator(config, formElement).enableValidation()
+const validationAddPluse = new FormValidator(config, formAddPlus)
+validationAddPluse.enableValidation()
 
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
-export {elementImageOpened}
+const validationFormElement = new FormValidator(config, formElement)
+validationFormElement.enableValidation()

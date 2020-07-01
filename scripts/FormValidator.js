@@ -57,5 +57,14 @@ export default class FormValidator{
             return !inputElement.validity.valid;
         });
     };    
+
+    cleaningForms(){
+        this._form.querySelectorAll('.error').forEach((span) => {
+            span.textContent = "";
+          });
+          this._form.querySelectorAll(this._selectors.inputSelector).forEach((input) => {   
+            input.classList.remove(this._selectors.inputErrorClass);
+          });
+    }
 }
 
