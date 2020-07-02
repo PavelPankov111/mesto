@@ -35,6 +35,8 @@ const config = {
 
 profileButtonPlus.addEventListener('click', () => {
     openPopup(plusForm) 
+    inputPlusName.value = '';
+    inputPlusLink.value = '';
     validationAddPluse.cleaningForms()
 });
 
@@ -98,16 +100,12 @@ vectorClose.addEventListener('click', () =>
     name: inputPlusName.value
     };
     
-    inputPlusName.value = '';
-    inputPlusLink.value = '';
-
     popupPluseButton.classList.add(config.inactiveButtonClass)
     const card = new Card(object, `element-template`);
     const renderCard = card.renderTemplate();
     elements.prepend(renderCard);
 
     closePopup(plusForm);
-
     resetForms(formAddPlus)  
 });
 
