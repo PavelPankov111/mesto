@@ -35,8 +35,7 @@ const config = {
 
 profileButtonPlus.addEventListener('click', () => {
     openPopup(plusForm) 
-    const validation =  new FormValidator(config, plusForm)
-    validation.cleaningForms()
+    validationAddPluse.cleaningForms()
 });
 
 closePlusButton.addEventListener('click', () => {
@@ -62,8 +61,7 @@ plusForm.addEventListener('mousedown', closeByOverlayClick)
         nameInput.value = profileTitle.textContent;
         jobInput.value = profileSubtitle.textContent;
         popupProfileButton.classList.remove(config.inactiveButtonClass);
-        const validation =  new FormValidator(config, formElement)
-        validation.cleaningForms()
+        validationFormElement.cleaningForms()
     })
    
     closeButton.addEventListener('click', () => {
@@ -87,8 +85,8 @@ vectorClose.addEventListener('click', () =>
   
 
  initialCards.forEach( (item) => {
-    const card = new Card(item, `element-template`);
-    const renderCard = card.getCard();
+    const card = new Card(item, `element-template`)
+    const renderCard = card.renderTemplate();
     elements.prepend(renderCard);
 });
 
@@ -105,13 +103,10 @@ vectorClose.addEventListener('click', () =>
 
     popupPluseButton.classList.add(config.inactiveButtonClass)
     const card = new Card(object, `element-template`);
-    const renderCard = card.getCard();
+    const renderCard = card.renderTemplate();
     elements.prepend(renderCard);
 
     closePopup(plusForm);
-    
-    const validation =  new FormValidator(config, formAddPlus)
-    validation.cleaningForms()
 
     resetForms(formAddPlus)  
 });

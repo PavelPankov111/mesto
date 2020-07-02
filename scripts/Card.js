@@ -6,27 +6,24 @@ export default class Card {
         this._template = template; 
     }
 
-    getCard(){
+    _getCard(){
         const cardTemplate = document.querySelector(`.${this._template}`).content
         const cardElemnt = cardTemplate.querySelector('.element').cloneNode(true)
-        this._card = cardElemnt
-        this._elementImage = this._card.querySelector('.element__image'); 
-        this._elementTitle = this._card.querySelector('.element__title');
-        this._elButLike = this._card.querySelector('.element__button-like');
-        this._elementTrash = this._card.querySelector('.element__trashs');
-        this._renderTemplate()
+        this._elementImage = cardElemnt.querySelector('.element__image'); 
+        this._elementTitle = cardElemnt.querySelector('.element__title');
+        this._elButLike = cardElemnt.querySelector('.element__button-like');
+        this._elementTrash = cardElemnt.querySelector('.element__trashs');
        
         return cardElemnt;
-
     }
 
     _like(){
-        this._card.querySelector('.element__button-like').classList.toggle('element__button-like_active')
+        this.cardElemnt.querySelector('.element__button-like').classList.toggle('element__button-like_active')
     }
 
     _delete(){
-        this._card.remove()
-        this._card = null; 
+        this.cardElemnt.remove()
+        this.cardElemnt = null; 
     }
 
     _openImage(){
@@ -40,15 +37,18 @@ export default class Card {
     }
 
     _eventListeners(){
-        this._card.querySelector('.element__button-like').addEventListener('click', () => this._like());
-        this._card.querySelector('.element__trashs').addEventListener('click',() =>  this._delete());
+        this.cardElemnt.querySelector('.element__button-like').addEventListener('click', () => this._like());
+        this.cardElemnt.querySelector('.element__trashs').addEventListener('click',() =>  this._delete());
         this._elementImage.addEventListener('click',() => this._openImage());
     }
 
-    _renderTemplate(){
+    renderTemplate(){
+    this.cardElemnt = this._getCard()
     this._elementTitle.textContent = this._item.name;
     this._elementImage.src = this._item.link;
 
     this._eventListeners()
+
+    return this.cardElemnt
     }
 } 
