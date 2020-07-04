@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="./pages/index.css"> -->
+    <link rel="shortcut icon" href="./images/i.webp" type="image/x-icon">
+    <title>Место</title>
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <img class="header__logo" alt="Место Россия" src="./images/vector.svg">
+        </header>
+    <section class="profile">
+        <div class="profile__avatar-info">
+        <img class="profile__avatar" alt="Жак-Ив Кусто" src="./images/image.png">
+        <div class="profile__info">
+            <div class="profile__button">
+                <h1 class="profile__title">Жак-Ив Кусто</h1>
+                <button type="button" class="profile__edit-button" title="Редактировать">
+                    <img class="profile__vector-button" src="./images/vector1.svg" alt="карандаш">
+                </button>
+            </div>
+            <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+    </div>
+    <button type="button" class="profile__button-add" title="Добавить">
+        <img class="profile__vector-add" src="./images/vector2.svg" alt="плюсик">
+    </button>
+</section>
+<section class="elements">
+</section>
+    <footer class="footer">
+        <p class="footer__title">&copy; Pankov Pavel</p>
+    </footer>
+    <div class="popup">
+        <form name="OpenForm" method="get" action="#" class="form popup__container popup__form" novalidate>
+            <button type="reset" class="popup__vector-button">
+            <img class="popup__vector" src="./images/close__icon.svg" alt="кнопка закрытия">
+            </button>
+            <div class="popup__content">
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <div class="popup__inputs">
+                   
+                <input type="text" autocomplete="off" id="user-name" name="user-name" class="popup__input popup__input_name" placeholder="Имя"  required minlength="2" maxlength="40">
+                <span id="user-name-error" class="error"></span>
+
+                <input type="text" autocomplete="off" id="about-user" name="about-user" class="popup__input popup__input_job" placeholder="О себе"  required minlength="2" maxlength="200">
+                <span id="about-user-error" class="error"></span>
+
+                
+            </div>
+           <button type="submit" class="popup__button popup__button_disabled">
+            Сохранить
+           </button>
+           </div>
+        </form>
+    </div>
+<div class="popup-pluse popup">
+    <form id="popupPluse" name="pluseForm" class="form popup-pluse__container popup__form" novalidate>
+        <button type="reset" class="popup__vector-button">
+            <img class="popup-pluse__vector" src="./images/close__icon.svg" alt="кнопка закрытия">
+            </button>
+            <div class="popup-pluse__content">
+                <h3 class="popup-pluse__title">Новое место</h3>
+                <div class="popup-pluse__inputs">
+                <input type="text" autocomplete="off" id="name-card" name="name" class="popup-pluse__input popup__input" placeholder="Название" required minlength="1" maxlength="30"> 
+
+                <span id="name-card-error" class="error"></span>
+
+                <input  type="url" autocomplete="off" id="link" name="link" class="popup__input  popup-pluse__input-link" placeholder="Ссылка на картинку" required> 
+
+                <span id="link-error" class="error"></span>
+            </div>
+            <button type="submit" class="popup__button popup-pluse__button popup__button_disabled"> 
+               Создать
+            </button>
+            </div>
+    </form>
+</div>
+<template class="element-template">
+    <div class="element">
+        <img class="element__image"  alt="Кажется вы вставили не рабочую ссылку">
+    <button class="element__trashs" type="reset">
+     </button>
+        <div class="element__title-like">
+            <h2 class="element__title"></h2>
+            <button type="button" class="element__button-like">
+            </button>         
+        </div>
+    </div>
+    </template>
+    <div class="popup-element popup">
+        <div class="popup__element-container">
+        <img class="popup__element-image" alt="">
+        <h2 class="popup__element-text"></h2> 
+        <button type="reset" class="popup__vector-button">
+            <img class="popup__vector-element" src="./images/close__icon.svg" alt="кнопка закрытия">
+        </button>
+    </div>
+    </div>
+</div>
+<!-- <script  src="./scripts/initialCards.js"></script>
+</script>
+<script type="module" src="./src/index.js">
+</script> -->
+</body>
+</html>
