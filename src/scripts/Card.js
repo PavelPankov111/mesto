@@ -1,4 +1,4 @@
-// import {openPopup, elementImageOpened} from './utilits.js';
+import {openPopup, elementImageOpened} from './utilits.js';
 
 export default class Card {
     constructor(item, template){

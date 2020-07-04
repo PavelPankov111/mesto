@@ -1,7 +1,8 @@
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
-import {elementImageOpened, openPopup, closePopup} from './utilits.js'
-import './styles/index.css';
+import Card from './scripts/Card.js';
+import FormValidator from './scripts/FormValidator.js';
+import {elementImageOpened, openPopup, closePopup} from './scripts/utilits.js'
+import {initialCards} from './scripts/initialCards.js'
+import './pages/index.css';
 
 
 const buttonEdit = document.querySelector('.profile__edit-button');
