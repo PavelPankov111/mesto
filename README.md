@@ -8,6 +8,8 @@
 1. _html5_
 2. _css3_
 3. _javascript_
+4. _webpack_
+5. _ООП_
 
 ### 1. html:
 ``` html
