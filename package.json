@@ -2,7 +2,7 @@
   "name": "yandex.praktikum",
   "version": "1.0.0",
   "description": "1. _html5_ 2. _css3_ 3. _javascript_",
-  "homepage": "https://github.com/PavelPankov111/mesto#readme",
+  "homepage": "https://github.com/PavelPankov111/mesto/gh-pages",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode development --open --watch",
