@@ -10,7 +10,6 @@ import { buttonEdit,profileFormPopup,nameInput,jobInput,formElement,closeButton,
 inputPlusName,inputPlusLink,formAddPlus,popupProfileButton,popupPluseButton,config,vectorClose, elementImageOpened  } from './scripts/constants.js' 
 import PopupWithImage from './scripts/PopupWithImage.js';
 
-
 profileButtonPlus.addEventListener('click', () => {
     new Popup().open(plusForm)
     inputPlusName.value = '';
@@ -22,7 +21,7 @@ profileButtonPlus.addEventListener('click', () => {
 
 closePlusButton.addEventListener('click', () => {
     new Popup().close(plusForm)
- })
+})
 
 const imagePopup = new PopupWithImage('.popup-element')
 
