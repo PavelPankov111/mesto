@@ -1,17 +1,16 @@
-import Card from './scripts/Card.js';
-import FormValidator from './scripts/FormValidator.js';
-import {initialCards} from './scripts/initialCards.js'
-import Section from './scripts/Section.js'
-import Popup from './scripts/Popup.js'
-import './pages/index.css'
-import UserInfo from './scripts/UserInfo.js';
-import  PopupWithForm from './scripts/PopupWithForm.js';
-import { buttonEdit,profileFormPopup,nameInput,jobInput,formElement,closeButton,profileButtonPlus,plusForm,elements,closePlusButton,
-inputPlusName,inputPlusLink,formAddPlus,popupProfileButton,popupPluseButton,config,vectorClose, elementImageOpened  } from './scripts/constants.js' 
-import PopupWithImage from './scripts/PopupWithImage.js';
+import Card from '../scripts/Card.js';
+import FormValidator from '../scripts/FormValidator.js';
+import {initialCards} from '../scripts/constants.js'
+import Section from '../scripts/Section.js'
+import './index.css'
+import UserInfo from '../scripts/UserInfo.js';
+import  PopupWithForm from '../scripts/PopupWithForm.js';
+import { buttonEdit,nameInput,jobInput,formElement,closeButton,profileButtonPlus,plusForm,elements,closePlusButton,
+inputPlusName,inputPlusLink,formAddPlus,popupProfileButton,popupPluseButton,config,vectorClose} from '../scripts/utils.js' 
+import PopupWithImage from '../scripts/PopupWithImage.js';
 
 profileButtonPlus.addEventListener('click', () => {
-    new Popup().open(plusForm)
+    addCardSubmit.open()
     inputPlusName.value = '';
     inputPlusLink.value = '';
     validationAddPluse.cleaningForms()
@@ -20,10 +19,12 @@ profileButtonPlus.addEventListener('click', () => {
 });
 
 closePlusButton.addEventListener('click', () => {
-    new Popup().close(plusForm)
+    addCardSubmit.close()
 })
 
-const imagePopup = new PopupWithImage('.popup-element')
+const imagePopup = new PopupWithImage('.popup-element', '.popup__element-image', '.popup__element-text')
+
+imagePopup.setEventListeners()
 
 const renderInitialCards = new Section({
     items: initialCards,
@@ -41,18 +42,19 @@ const renderInitialCards = new Section({
 renderInitialCards.renderItem()
 
 buttonEdit.addEventListener('click', () => {
-    new Popup().open(profileFormPopup)
+    profileSubmit.open()
+    validationFormElement.cleaningForms()
     popupProfileButton.classList.remove(config.inactiveButtonClass);
     nameInput.value = userInfo.getUserInfo().name
     jobInput.value = userInfo.getUserInfo().info;
 })
 
 closeButton.addEventListener('click', () => {
-    new Popup().close(profileFormPopup)
+    profileSubmit.close()
 });
 
 vectorClose.addEventListener('click', () => {
-    new Popup().close(elementImageOpened)
+    imagePopup.close()
 })
 
 const userInfo = new UserInfo({
@@ -60,15 +62,10 @@ const userInfo = new UserInfo({
     profileSubtitle:'.profile__subtitle'
 });
 
-const object = {
-   name: inputPlusLink.value,
-   link: inputPlusName.value
-};
-    
 const profileSubmit = new PopupWithForm({
     submitCallBack: (profileInfo) => {
     userInfo.setUserInfo(profileInfo);
-    profileSubmit.close(profileFormPopup)
+    profileSubmit.close()
     }
 }, '.popup')
 

@@ -1,9 +1,8 @@
 import Popup from './Popup';
 
-
 export default class PopupWithForm extends Popup{
     constructor({submitCallBack}, popup){
-        super(popup)
+        super(popup);
         this._submitCallBack = submitCallBack;
         this._formSelector = this._popup.querySelector('.popup__form');
     }
@@ -25,7 +24,11 @@ export default class PopupWithForm extends Popup{
         });
     }
 
-    close(form){
-        super.close(form)
+    close(){
+        super.close()
+    }
+
+    open(){
+        super.open()
     }
 }

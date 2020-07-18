@@ -1,15 +1,24 @@
 import Popup from "./Popup";
-import { elementImageOpened } from "./constants";
-import { cosh } from "core-js/fn/number";
 
 export default class PopupWithImage extends Popup{
-    constructor(popup){
+    constructor(popup, popupElementImage, popupElementText){
         super(popup)
+        this._popupElementImage = popupElementImage;
+        this._popupElementText = popupElementText;
     }
 
     open(link, name){
-        super.open(elementImageOpened)
-        this._popup.querySelector('.popup__element-image').src = link;
-        this._popup.querySelector('.popup__element-text').textContent = name;
+        super.open()
+        this._popup.querySelector(this._popupElementImage).src = link;
+        this._popup.querySelector(this._popupElementText).textContent = name;
+        this._popup.querySelector(this._popupElementImage).alt = name;
+    }
+
+    close(){
+        super.close()
+    }
+
+    setEventListeners(){
+        super.setEventListeners()
     }
 }

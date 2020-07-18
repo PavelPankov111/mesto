@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode development --open --watch",
-    "build": "rimraf dist webpack --mode production",
+    "build": "rimraf dist && webpack --mode production",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
@@ -19,8 +19,7 @@
     "url": "https://github.com/PavelPankov111/mesto/issues"
   },
   "dependencies": {
-    "core-js": "^2.6.11",
-    "jquery": "^3.5.1"
+    "core-js": "^2.6.11"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
