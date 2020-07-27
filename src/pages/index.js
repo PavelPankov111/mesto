@@ -189,12 +189,13 @@ const userInfo = new UserInfo({
 const profileSubmit = new PopupWithForm({
     submitCallBack: (profileInfo) => {
     popupProfileButton.textContent = 'Сохранение...'
-    setInterval(api.changeUserInfo(profileInfo), 5000)
+    api.changeUserInfo(profileInfo)
     userInfo.setUserInfo(profileInfo);
    
     popupProfileButton.textContent = 'Сохранить'
     }
 }, '.popup')
+
 
 
 // profileSubmit.setEventListeners()   
