@@ -15,6 +15,17 @@ export const vectorClose =  document.querySelector('.popup__vector-element');
 export const popupPluseButton = document.querySelector('.popup-pluse__button'); 
 export const popupProfileButton = document.querySelector('.popup__button'); 
 export const elementImageOpened = document.querySelector('.popup-element'); 
+export const profileAvatar = document.querySelector('.profile__avatar'); 
+export const avatarCloseButton = document.querySelector('.popup-avatar__vector'); 
+export const formAvatarContainer = document.querySelector('.popup-avatar__container'); 
+export const popupAvatarButton = document.querySelector('.popup-avatar__button'); 
+export const popupAvatarLink = document.querySelector('.popup-avatar__input-link'); 
+export const elementTrash = document.querySelector('.element__trashs'); 
+export const profileTitle = document.querySelector('.profile__title'); 
+export const profileSubtitle = document.querySelector('.profile__subtitle'); 
+export const prfileOverlay = document.querySelector('.profile__avatar-overlay'); 
+export const popupDeletButton = document.querySelector('.popup-delete__vector'); 
+export const popupDeletSubmitButton = document.querySelector('.popup-delete__button'); 
 
 export const config = {
     formSelector: '.popup__form',

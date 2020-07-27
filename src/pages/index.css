@@ -7,7 +7,10 @@
 @import url(../blocks/page/page.css);
 @import url(../blocks/popup-element/popup-element.css);
 @import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/profile.css);
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup-delete/popup-delete.css);
+@import url(../blocks/popup-avatar/popup-avatar.css);
 @import url(../blocks/popup-pluse/popup-pluse.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/element-opened/element-opened.css);

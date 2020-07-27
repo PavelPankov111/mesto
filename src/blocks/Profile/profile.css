@@ -1,4 +1,5 @@
 @import url(./__avatar-info/profile__avatar-info.css);
+@import url(./__avatar-overlay/profile__avatar-overlay.css);
 @import url(./__avatar/profile__avatar.css);
 @import url(./__button-add/profile__button-add.css);
 @import url(./__button/profile__button.css);
@@ -8,6 +9,7 @@
 @import url(./__title/profile__title.css);
 @import url(./__vector-add/profile__vector-add.css);
 @import url(./__vector-button/profile__vector-button.css);
+
 
 .profile{
     max-width:  882px;
@@ -20,9 +22,8 @@
 
 @media screen and (max-width : 740px){
     .profile{
-         flex-direction: column;
+        flex-direction: column;
     }
-   
 }
 
 @media screen and (max-width : 950px){

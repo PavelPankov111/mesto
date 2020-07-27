@@ -1,0 +1,7 @@
+.popup-delete__content{
+    width:350px;
+    height:111px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}

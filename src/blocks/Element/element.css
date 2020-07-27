@@ -11,6 +11,7 @@
 @import url(./__text-active/element__text-active.css);
 @import url(./__vector-close/element__vector-close.css);
 @import url(./__vector-button/element__vector-button.css);
+@import url(./__counter/element__counter.css);
 
 
 .element{
