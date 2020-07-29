@@ -14,7 +14,13 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: '/node_modules/'
+        exclude: '/node_modules/',
+        options: {
+          presets: ['@babel/preset-env',
+          {'plugins': ['@babel/plugin-proposal-class-properties',
+          'transform-class-properties']
+        }]
+      }, 
       },
       {
         test: /\.css$/,
@@ -43,6 +49,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
-    new MiniCssExtractPlugin()
-  ]
+    new MiniCssExtractPlugin(),
+  ],
+
 };
+

@@ -52,7 +52,7 @@ export default class FormValidator{
         this._setEventListeners()
     }
         
-    _hasInvalidInput  (inputs) {
+    _hasInvalidInput (inputs) {
         return inputs.some((inputElement) => {
             return !inputElement.validity.valid;
         });

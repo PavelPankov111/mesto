@@ -1,106 +1,121 @@
-import Card from '../scripts/Card.js';
-import FormValidator from '../scripts/FormValidator.js';
-import Section from '../scripts/Section.js'
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import Section from '../components/Section.js'
 import './index.css'
-import UserInfo from '../scripts/UserInfo.js';
-import  PopupWithForm from '../scripts/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
+import  PopupWithForm from '../components/PopupWithForm.js';
 import { buttonEdit,nameInput,jobInput,formElement,closeButton,profileButtonPlus,plusForm,elements,closePlusButton,
 inputPlusName,inputPlusLink,formAddPlus,popupProfileButton,popupPluseButton,config,vectorClose, profileAvatar, avatarCloseButton, 
 formAvatarContainer, popupAvatarButton, popupAvatarLink, profileTitle, profileSubtitle,prfileOverlay,popupDeletButton, popupDeletSubmitButton
-} from '../scripts/utils.js' 
-import PopupWithImage from '../scripts/PopupWithImage.js';
-import Api from '../scripts/Api.js';
-import PopupDeleteCard from '../scripts/PopupDeleteCard.js';
+} from '../components/utils.js' 
+import PopupWithImage from '../components/PopupWithImage.js';
+import Api from '../components/Api.js';
+import PopupDeleteCard from '../components/PopupDeleteCard.js';
 
-const api = new Api()
+const obj = {
+    url: 'https://mesto.nomoreparties.co/v1/cohort-13',
+    headers: {
+    'Content-Type': 'application/json',
+    authorization: '8ed74a04-ed04-4c07-90fb-2948fe98949f',
+    }
+};
+
+const api = new Api(obj)
+const deleteItem =  new PopupDeleteCard('.popup-delete')
+
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
 .then( (data) =>{
+    console.log(data[1])
 
-    const deleteItem =  new PopupDeleteCard('.popup-delete')
-    
-    profileTitle.textContent = (data[0]).name,
-    profileSubtitle.textContent = (data[0]).about,
-    profileAvatar.src = (data[0]).avatar
-    console.log(data._id)
-
-    const addCardSubmit = new PopupWithForm({
-        submitCallBack: (item) => {        
-            popupPluseButton.textContent = 'Создание...'        
-            api.addCard(item)
-            .then( item =>{
-                console.log(item)
-            const card = new Card(item , `element-template`, {
+    function renderCards(item){
+        const card = new Card(item , `element-template`, {
             handleCardClick: () => {
                 imagePopup.open(item.link, item.name)
             }
             }, "8f1f4c5f62257224904b0b69", item, {
-                deleteElement: () =>{
-                    deleteItem.setEventListeners()
-                    deleteItem.submitCallBack(function(){
-                        popupDeletSubmitButton.textContent= 'Удаление...'
-                        api.deleteCard(item._id)
-                        deleteItem.close()
-                        card.removeCard()
-                        popupDeletSubmitButton.textContent= 'Да'
-                    })
-                    deleteItem.open()
-                }
-
-            }, {
-                removeLike: () =>{
-                    api.setLike(item._id)
-                }
-            }, {
-                setLike: () =>{
-                    api.removeLike(item._id)
-                }
+            deleteElement: () =>{
+            deleteItem.submitCallBack(function(){ 
+                popupDeletSubmitButton.textContent= 'Удаление...'
+                api.deleteCard(item._id)
+                .then((res)=>{
+                    deleteItem.close()
+                    card.removeCard()
+                    popupDeletSubmitButton.textContent= 'Да'
+                    return Promise.reject(`Ошибка: ${res.status}`)
             })
-            popupPluseButton.textContent = 'Создать'        
+            })
+            deleteItem.open()
+            }
+            }, {
+            removeLike: () =>{
+                api.setLike(item._id)
+                .then(res =>{
+                    if (res.ok) {
+                        return res.json();
+                        } 
+                        return Promise.reject(`Ошибка: ${res.status}`)
+                })
+                .catch((err) => {
+                    console.log(err); // выведем ошибку в консоль
+                });
+            }
+            }, {
+            setLike: () =>{
+                api.removeLike(item._id)
+                .then(res =>{
+                    if (res.ok) {
+                        return res.json();
+                        } 
+                        return Promise.reject(`Ошибка: ${res.status}`)
+                })
+                .catch((err) => {
+                    console.log(err); // выведем ошибку в консоль
+                });
+            }
+            }) 
+        
             const renderCard = card.renderTemplate();
-            elements.prepend(renderCard);
-            addCardSubmit.close(plusForm)
-        })
-        .catch((err) => {
-            console.log(err); // выведем ошибку в консоль
-          });
-        }
-   
+            elements.append(renderCard)
+            console.log(renderCard)
+            
+            return renderCard
+    }
+
+    profileTitle.textContent = (data[0]).name,
+    profileSubtitle.textContent = (data[0]).about,
+    profileAvatar.src = (data[0]).avatar
+
+    const addCardSubmit = new PopupWithForm({
+    submitCallBack: (item) => {        
+    popupPluseButton.textContent = 'Создание...'        
+    api.addCard(item)
+    .then( (item) =>{  
+    renderCards(item)
+    // const renderCard = eqrtgvrst().renderTemplate();
+    // elements.prepend(renderCard); 
+        
+    popupPluseButton.textContent = 'Создать'        
+    // const renderCard = card.renderTemplate();
+    // elements.prepend(renderCard);
+    addCardSubmit.close(plusForm)
+    return Promise.reject(`Ошибка: ${item.status}`)
+    })
+    .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+        });
+    }
     }, '.popup-pluse')
 
     const renderInitialCards = new Section({
-        renderer: (item) => {   
-        const card = new Card(item , `element-template`, {
-        handleCardClick: () => {
-            imagePopup.open(item.link, item.name)
-        }}, "8f1f4c5f62257224904b0b69", item, {
-            deleteElement: () =>{
-                deleteItem.setEventListeners()
-                deleteItem.submitCallBack(function(){
-                    popupDeletSubmitButton.textContent= 'Удаление...'
-                        api.deleteCard(item._id)
-                        deleteItem.close()
-                        card.removeCard()
-                        popupDeletSubmitButton.textContent= 'Да'
-                })
-                deleteItem.open()
-            }
-        }, {
-            removeLike: () =>{
-                api.setLike(item._id)
-            }
-        }, {
-            setLike: () =>{
-                api.removeLike(item._id)
-            }
-        })
-        const renderCard = card.renderTemplate();
-            return renderCard;
-        }
+        renderer: (item) => { 
+        renderCards(item)
+            console.log(item)
+    }
     }, elements)
 
     renderInitialCards.renderItem(data[1])
-    
+
     addCardSubmit.setEventListeners()
 
     profileButtonPlus.addEventListener('click', () => {
@@ -118,12 +133,11 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     popupDeletButton.addEventListener('click', () => {
         deleteItem.close()
     })
-})
-.catch((err) => {
-    console.log(err); // выведем ошибку в консоль
-  });
-
-
+    return Promise.reject(`Ошибка: ${data.status}`)
+    })
+    .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+    });
 
 const changeProfileAvatar = new PopupWithForm({
     submitCallBack: (form) => {
@@ -133,15 +147,18 @@ const changeProfileAvatar = new PopupWithForm({
         if (res.ok) {
             return res.json();
         } 
+        return Promise.reject(`Ошибка: ${res.status}`)
         })
         .then((form) => {
             profileAvatar.src = form.avatar 
+            changeProfileAvatar.close()
+            popupAvatarButton.textContent = 'Создать'
+            return Promise.reject(`Ошибка: ${form.status}`)
         })
         .catch((err) => {
             console.log(err); 
         });      
-        changeProfileAvatar.close()
-        popupAvatarButton.textContent = 'Создать'
+       
     }
 }, '.popup-avatar')
 
@@ -184,21 +201,21 @@ const userInfo = new UserInfo({
     profileSubtitle:'.profile__subtitle'
 });
 
-
-
 const profileSubmit = new PopupWithForm({
     submitCallBack: (profileInfo) => {
     popupProfileButton.textContent = 'Сохранение...'
     api.changeUserInfo(profileInfo)
-    userInfo.setUserInfo(profileInfo);
-   
-    popupProfileButton.textContent = 'Сохранить'
+    .then((res) =>{
+        userInfo.setUserInfo(profileInfo);
+        profileSubmit.close()
+        popupProfileButton.textContent = 'Сохранить'
+        return Promise.reject(`Ошибка: ${res.status}`)
+    })
+    .catch((err) => {
+        console.log(err); 
+    });      
     }
 }, '.popup')
-
-
-
-// profileSubmit.setEventListeners()   
 
 profileSubmit.setEventListeners()
 
