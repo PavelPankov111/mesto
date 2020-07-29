@@ -23,64 +23,57 @@ const obj = {
 const api = new Api(obj)
 const deleteItem =  new PopupDeleteCard('.popup-delete')
 
-
 Promise.all([api.getUserInfo(), api.getInitialCards()])
 .then( (data) =>{
-    console.log(data[1])
 
-    function renderCards(item){
-        const card = new Card(item , `element-template`, {
-            handleCardClick: () => {
-                imagePopup.open(item.link, item.name)
-            }
-            }, "8f1f4c5f62257224904b0b69", item, {
-            deleteElement: () =>{
-            deleteItem.submitCallBack(function(){ 
-                popupDeletSubmitButton.textContent= 'Удаление...'
-                api.deleteCard(item._id)
-                .then((res)=>{
-                    deleteItem.close()
-                    card.removeCard()
-                    popupDeletSubmitButton.textContent= 'Да'
-                    return Promise.reject(`Ошибка: ${res.status}`)
-            })
-            })
-            deleteItem.open()
-            }
-            }, {
-            removeLike: () =>{
-                api.setLike(item._id)
-                .then(res =>{
-                    if (res.ok) {
-                        return res.json();
-                        } 
-                        return Promise.reject(`Ошибка: ${res.status}`)
-                })
-                .catch((err) => {
-                    console.log(err); // выведем ошибку в консоль
-                });
-            }
-            }, {
-            setLike: () =>{
-                api.removeLike(item._id)
-                .then(res =>{
-                    if (res.ok) {
-                        return res.json();
-                        } 
-                        return Promise.reject(`Ошибка: ${res.status}`)
-                })
-                .catch((err) => {
-                    console.log(err); // выведем ошибку в консоль
-                });
-            }
-            }) 
-        
-            const renderCard = card.renderTemplate();
-            elements.append(renderCard)
-            console.log(renderCard)
-            
-            return renderCard
+function renderCards(item){
+    const card = new Card(item , `element-template`, {
+    handleCardClick: () => {
+        imagePopup.open(item.link, item.name)
     }
+    }, "8f1f4c5f62257224904b0b69", item, {
+    deleteElement: () =>{
+    deleteItem.submitCallBack(function(){ 
+        popupDeletSubmitButton.textContent= 'Удаление...'
+        api.deleteCard(item._id)
+        .then((res)=>{
+        deleteItem.close()
+        card.removeCard()
+        popupDeletSubmitButton.textContent= 'Да'
+        return Promise.reject(`Ошибка: ${res.status}`)
+    })
+    })
+    deleteItem.open()
+    }
+    }, {
+    removeLike: () =>{
+        api.setLike(item._id)
+        .then(res =>{
+        if (res.ok) {
+            return res.json();
+            } 
+            return Promise.reject(`Ошибка: ${res.status}`)
+        })
+        .catch((err) => {
+            console.log(err); // выведем ошибку в консоль
+        });
+    }
+    }, {
+    setLike: () =>{
+        api.removeLike(item._id)
+        .then(res =>{
+        if (res.ok) {
+            return res.json();
+            } 
+            return Promise.reject(`Ошибка: ${res.status}`)
+        })
+        .catch((err) => {
+            console.log(err); // выведем ошибку в консоль
+        });
+    }
+    }) 
+    return card.renderTemplate();
+}
 
     profileTitle.textContent = (data[0]).name,
     profileSubtitle.textContent = (data[0]).about,
@@ -88,18 +81,13 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 
     const addCardSubmit = new PopupWithForm({
     submitCallBack: (item) => {        
-    popupPluseButton.textContent = 'Создание...'        
+    popupPluseButton.textContent = 'Создание...' 
     api.addCard(item)
     .then( (item) =>{  
-    renderCards(item)
-    // const renderCard = eqrtgvrst().renderTemplate();
-    // elements.prepend(renderCard); 
-        
+    elements.prepend(renderCards(item))       
     popupPluseButton.textContent = 'Создать'        
-    // const renderCard = card.renderTemplate();
-    // elements.prepend(renderCard);
+    
     addCardSubmit.close(plusForm)
-    return Promise.reject(`Ошибка: ${item.status}`)
     })
     .catch((err) => {
         console.log(err); // выведем ошибку в консоль
@@ -109,10 +97,9 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 
     const renderInitialCards = new Section({
         renderer: (item) => { 
-        renderCards(item)
-            console.log(item)
+        return renderCards(item)
     }
-    }, elements)
+    }, '.elements')
 
     renderInitialCards.renderItem(data[1])
 
@@ -141,24 +128,16 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 
 const changeProfileAvatar = new PopupWithForm({
     submitCallBack: (form) => {
-        popupAvatarButton.textContent = 'Создание...'
-        api.changeAvatar(form['avatar-link'])
-        .then(res =>{
-        if (res.ok) {
-            return res.json();
-        } 
-        return Promise.reject(`Ошибка: ${res.status}`)
-        })
-        .then((form) => {
-            profileAvatar.src = form.avatar 
-            changeProfileAvatar.close()
-            popupAvatarButton.textContent = 'Создать'
-            return Promise.reject(`Ошибка: ${form.status}`)
-        })
-        .catch((err) => {
-            console.log(err); 
-        });      
-       
+    popupAvatarButton.textContent = 'Создание...'
+    api.changeAvatar(form['avatar-link'])
+    .then((form) => {
+        profileAvatar.src = form.avatar 
+        changeProfileAvatar.close()
+        popupAvatarButton.textContent = 'Создать'
+    })
+    .catch((err) => {
+        console.log(err); 
+    });      
     }
 }, '.popup-avatar')
 
@@ -170,7 +149,6 @@ prfileOverlay.addEventListener('click', () => {
     popupAvatarLink.value = '';
     validationProfileAvatar.cleaningForms()
 })
-
 
 avatarCloseButton.addEventListener('click', () => {
     changeProfileAvatar.close()

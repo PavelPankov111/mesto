@@ -43,12 +43,15 @@ changeAvatar(form){
           avatar: form
         })
   })
-  .then(res => { 
-    if (res.ok) { 
-    return res.json(); 
+  .then(form => { 
+    if (form.ok) { 
+    return form.json(); 
     } 
-  return Promise.reject(`Ошибка: ${res.status}`)
+  return Promise.reject(`Ошибка: ${form.status}`)
   })
+  .catch((err) => {
+    console.log(err); // выведем ошибку в консоль
+  });
 }
 
 addCard(item){
@@ -77,11 +80,11 @@ changeUserInfo(profileInfo){
         about: profileInfo.info
     })
   })
-  .then(res =>{
-    if (res.ok) {
-        return res.json();
+  .then(profileInfo =>{
+    if (profileInfo.ok) {
+        return profileInfo.json();
       } 
-      return Promise.reject(`Ошибка: ${res.status}`)
+      return Promise.reject(`Ошибка: ${profileInfo.status}`)
 })
 .catch((err) => {
   console.log(err); // выведем ошибку в консоль

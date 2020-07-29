@@ -17,10 +17,7 @@ export default class Card {
         this._elementImage = cardElemnt.querySelector('.element__image'); 
         this._elementTitle = cardElemnt.querySelector('.element__title');
         this._cardElmentLike = cardElemnt.querySelector('.element__button-like')
-
-
         return cardElemnt;
-
     }
 
     _likeCard(){
@@ -41,7 +38,7 @@ export default class Card {
 
     removeCard(){
         this.cardElemnt.remove()
-        // this.cardElemnt = null; 
+        this.cardElemnt = null; 
     }
 
     _eventListeners(){
