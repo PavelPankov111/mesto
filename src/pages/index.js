@@ -6,7 +6,7 @@ import UserInfo from '../components/UserInfo.js';
 import  PopupWithForm from '../components/PopupWithForm.js';
 import { buttonEdit,nameInput,jobInput,formElement,closeButton,profileButtonPlus,plusForm,elements,closePlusButton,
 inputPlusName,inputPlusLink,formAddPlus,popupProfileButton,popupPluseButton,config,vectorClose, profileAvatar, avatarCloseButton, 
-formAvatarContainer, popupAvatarButton, popupAvatarLink, profileTitle, profileSubtitle,prfileOverlay,popupDeletButton, popupDeletSubmitButton
+formAvatarContainer, popupAvatarButton, popupAvatarLink, profileTitle, profileSubtitle,profileOverlay,popupDeletButton, popupDeletSubmitButton,loading
 } from '../components/utils.js' 
 import PopupWithImage from '../components/PopupWithImage.js';
 import Api from '../components/Api.js';
@@ -21,12 +21,13 @@ const obj = {
 };
 
 const api = new Api(obj)
+loading.textContent = 'Loading...'
 const deleteItem =  new PopupDeleteCard('.popup-delete')
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
 .then( (data) =>{
 
-function renderCards(item){
+function createCard(item){
     const card = new Card(item , `element-template`, {
     handleCardClick: () => {
         imagePopup.open(item.link, item.name)
@@ -36,40 +37,21 @@ function renderCards(item){
     deleteItem.submitCallBack(function(){ 
         popupDeletSubmitButton.textContent= 'Удаление...'
         api.deleteCard(item._id)
-        .then((res)=>{
+        .then(()=>{
         deleteItem.close()
         card.removeCard()
         popupDeletSubmitButton.textContent= 'Да'
-        return Promise.reject(`Ошибка: ${res.status}`)
-    })
+        })
     })
     deleteItem.open()
     }
     }, {
     removeLike: () =>{
-        api.setLike(item._id)
-        .then(res =>{
-        if (res.ok) {
-            return res.json();
-            } 
-            return Promise.reject(`Ошибка: ${res.status}`)
-        })
-        .catch((err) => {
-            console.log(err); // выведем ошибку в консоль
-        });
+        api.removeLike(item._id)
     }
     }, {
     setLike: () =>{
-        api.removeLike(item._id)
-        .then(res =>{
-        if (res.ok) {
-            return res.json();
-            } 
-            return Promise.reject(`Ошибка: ${res.status}`)
-        })
-        .catch((err) => {
-            console.log(err); // выведем ошибку в консоль
-        });
+        api.setLike(item._id)
     }
     }) 
     return card.renderTemplate();
@@ -84,7 +66,7 @@ function renderCards(item){
     popupPluseButton.textContent = 'Создание...' 
     api.addCard(item)
     .then( (item) =>{  
-    elements.prepend(renderCards(item))       
+    elements.prepend(createCard(item))       
     popupPluseButton.textContent = 'Создать'        
     
     addCardSubmit.close(plusForm)
@@ -97,13 +79,15 @@ function renderCards(item){
 
     const renderInitialCards = new Section({
         renderer: (item) => { 
-        return renderCards(item)
+        return createCard(item)
     }
     }, '.elements')
 
     renderInitialCards.renderItem(data[1])
+    loading.textContent = ''
 
     addCardSubmit.setEventListeners()
+
 
     profileButtonPlus.addEventListener('click', () => {
         addCardSubmit.open()
@@ -120,7 +104,6 @@ function renderCards(item){
     popupDeletButton.addEventListener('click', () => {
         deleteItem.close()
     })
-    return Promise.reject(`Ошибка: ${data.status}`)
     })
     .catch((err) => {
         console.log(err); // выведем ошибку в консоль
@@ -143,7 +126,7 @@ const changeProfileAvatar = new PopupWithForm({
 
 changeProfileAvatar.setEventListeners()
 
-prfileOverlay.addEventListener('click', () => {
+profileOverlay.addEventListener('click', () => {
     changeProfileAvatar.open()
     popupAvatarButton.classList.add(config.inactiveButtonClass)
     popupAvatarLink.value = '';
@@ -183,11 +166,10 @@ const profileSubmit = new PopupWithForm({
     submitCallBack: (profileInfo) => {
     popupProfileButton.textContent = 'Сохранение...'
     api.changeUserInfo(profileInfo)
-    .then((res) =>{
+    .then(() =>{
         userInfo.setUserInfo(profileInfo);
         profileSubmit.close()
         popupProfileButton.textContent = 'Сохранить'
-        return Promise.reject(`Ошибка: ${res.status}`)
     })
     .catch((err) => {
         console.log(err); 

@@ -23,9 +23,11 @@ export const popupAvatarLink = document.querySelector('.popup-avatar__input-link
 export const elementTrash = document.querySelector('.element__trashs'); 
 export const profileTitle = document.querySelector('.profile__title'); 
 export const profileSubtitle = document.querySelector('.profile__subtitle'); 
-export const prfileOverlay = document.querySelector('.profile__avatar-overlay'); 
+export const profileOverlay = document.querySelector('.profile__avatar-overlay'); 
 export const popupDeletButton = document.querySelector('.popup-delete__vector'); 
 export const popupDeletSubmitButton = document.querySelector('.popup-delete__button'); 
+export const loading = document.querySelector('.loading'); 
+
 
 export const config = {
     formSelector: '.popup__form',

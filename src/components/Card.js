@@ -22,12 +22,12 @@ export default class Card {
 
     _likeCard(){
         if (this._cardElmentLike.classList.contains('element__button-like_active')) {
-            this._setLike()
+            this._removeLike() 
             this.cardElemnt.querySelector('.element__counter').textContent = this._likes.length -= 1;
             this._cardElmentLike.classList.remove('element__button-like_active');
         } else {
             this._cardElmentLike.classList.add('element__button-like_active');
-            this._removeLike()  
+            this._setLike()
             this.cardElemnt.querySelector('.element__counter').textContent = this._likes.length += 1;
         }
     }
@@ -56,7 +56,7 @@ export default class Card {
 
 
     this._likes.forEach((item) => {
-        if (item._id === '8f1f4c5f62257224904b0b69') {
+        if (item._id === this._userId) {
             this._cardElmentLike.classList.add('element__button-like_active');
         }
       })
