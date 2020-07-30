@@ -5,34 +5,32 @@ export default class Api {
       this.headers = headers;
   }
 
+_handleResponse(response){
+  if (response.ok) {
+    return response.json();
+  } else {
+    return Promise.reject(response.statusText)
+  }
+}
+
+_handleResponseError(err){
+  return Promise.reject(err.message)
+}
+
 getInitialCards(){
     return fetch(`${this.url}/cards`, {
       headers: this.headers,
     })
-    .then(item =>{
-        if (item.ok) {
-            return item.json();
-          } 
-        return Promise.reject(`Ошибка: ${item.status}`)
-        })
-    .catch((err) => {
-      console.log(err); // выведем ошибку в консоль
-    });
+    .then(this._handleResponse)
+    .catch(this._handleResponseError)
 }
 
 getUserInfo(){
   return fetch(`${this.url}/users/me`, {
     headers: this.headers
   })
-    .then(res =>{
-      if (res.ok) {
-          return res.json();
-        } 
-        return Promise.reject(`Ошибка: ${res.status}`)
-  })
-  .catch((err) => {
-    console.log(err); // выведем ошибку в консоль
-  });
+  .then(this._handleResponse)
+  .catch(this._handleResponseError)
 }
 
 changeAvatar(form){
@@ -43,15 +41,8 @@ changeAvatar(form){
           avatar: form
         })
   })
-  .then(form => { 
-    if (form.ok) { 
-    return form.json(); 
-    } 
-  return Promise.reject(`Ошибка: ${form.status}`)
-  })
-  .catch((err) => {
-    console.log(err); // выведем ошибку в консоль
-  });
+  .then(this._handleResponse)
+  .catch(this._handleResponseError)
 }
 
 addCard(item){
@@ -60,15 +51,8 @@ addCard(item){
     headers: this.headers,
     body: JSON.stringify(item)
   })
-  .then(item =>{
-    if (item.ok) {
-        return item.json();
-      } 
-      return Promise.reject(`Ошибка: ${res.status}`)
-})
-.catch((err) => {
-  console.log(err); // выведем ошибку в консоль
-});
+  .then(this._handleResponse)
+  .catch(this._handleResponseError)
 }
 
 changeUserInfo(profileInfo){
@@ -80,15 +64,8 @@ changeUserInfo(profileInfo){
         about: profileInfo.info
     })
   })
-  .then(profileInfo =>{
-    if (profileInfo.ok) {
-        return profileInfo.json();
-      } 
-      return Promise.reject(`Ошибка: ${profileInfo.status}`)
-})
-.catch((err) => {
-  console.log(err); // выведем ошибку в консоль
-});
+  .then(this._handleResponse)
+  .catch(this._handleResponseError)
 }
 
 deleteCard(item){
@@ -96,15 +73,8 @@ return fetch(`${this.url}/cards/${item}`, {
   method: 'DELETE',
   headers: this.headers
 })
-.then(res =>{
-  if (res.ok) {
-      return res.json();
-    } 
-    return Promise.reject(`Ошибка: ${res.status}`)
-})
-.catch((err) => {
-console.log(err); // выведем ошибку в консоль
-});
+.then(this._handleResponse)
+  .catch(this._handleResponseError)
 }
 
 setLike(item) {
@@ -112,31 +82,18 @@ setLike(item) {
     method: 'PUT',
     headers: this.headers
   })
-  .then(res =>{
-    if (res.ok) {
-        return res.json();
-      } 
-      return Promise.reject(`Ошибка: ${res.status}`)
-})
-.catch((err) => {
-  console.log(err); // выведем ошибку в консоль
-});
+  .then(this._handleResponse)
+  .catch(this._handleResponseError)
 }
 
 removeLike(item) {
 return fetch(`${this.url}/cards/likes/${item}`, {
   method: 'DELETE',
   headers: this.headers
-})
-.then(res =>{
-  if (res.ok) {
-      return res.json();
-    } 
-    return Promise.reject(`Ошибка: ${res.status}`)
-})
-.catch((err) => {
-console.log(err); // выведем ошибку в консоль
-});
+  })
+  .then(this._handleResponse)
+  .catch(this._handleResponseError)
 }
+
 }
 
