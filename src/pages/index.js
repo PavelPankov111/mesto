@@ -21,7 +21,7 @@ const obj = {
 };
 
 const api = new Api(obj)
-loading.textContent = 'Loading...'
+loading.textContent = 'Загрузка...'
 const deleteItem =  new PopupDeleteCard('.popup-delete')
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
