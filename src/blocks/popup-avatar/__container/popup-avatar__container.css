@@ -10,3 +10,10 @@
     top:6%;
     position: relative;
 }
+
+@media screen and (max-width : 620px){
+    .popup-avatar__container{
+        width: 241px;
+        height: 180px;
+    }
+}
