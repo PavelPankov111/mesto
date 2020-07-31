@@ -14,7 +14,7 @@
 .element{background:#fff;border-radius:10px;overflow:hidden;position:relative;height:362px;display:flex;flex-direction:column}
 .elements{max-width:882px;margin:47px auto auto;display:grid;grid-template-columns:282px 282px 282px;grid-gap:18px}@media screen and (max-width:950px){.elements{grid-template-columns:282px 282px;max-width:-webkit-min-content;max-width:-moz-min-content;max-width:min-content}}@media screen and (max-width:620px){.elements{grid-template-columns:282px;margin:36px auto auto}}
 .footer__title{font-weight:400;font-size:18px;line-height:22px;color:#545454}@media screen and (max-width:425px){.footer__title{font-size:14px;line-height:17px}}
-.footer{max-width:882px;margin:66px auto 60px}@media screen and (max-width:950px){.footer{max-width:92.84vw}}@media screen and (max-width:425px){.footer{max-width:88.13vw;margin:48px auto 36px}}@media screen and (max-width:320px){.footer{max-width:282px}}
+.footer{max-width:882px;margin:66px auto 60px}@media screen and (max-width:950px){.footer{max-width:92.84vw}}@media screen and (max-width:425px){.footer{max-width:88.13vw;margin:36px auto}}@media screen and (max-width:320px){.footer{max-width:282px}}
 .header__logo{max-width:142px;min-height:33px}@media screen and (max-width:425px){.header__logo{margin-left:17px;max-width:103px;max-height:24px}}
 .header{margin:45px auto auto;max-width:882px;border-bottom:1px solid rgba(84,84,84,.7);padding-bottom:40px}@media screen and (max-width:950px){.header{max-width:92.84vw}}@media screen and (max-width:425px){.header{margin:28px auto auto;max-width:425px;padding-bottom:30px}}
 .page{font-family:Inter,Arial,sans-serif;margin:auto;max-width:1280px;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;position:relative}
@@ -72,4 +72,5 @@
 .error{font-size:12px;line-height:14px;color:red;display:block;margin-top:4px;box-sizing:border-box;height:25px;max-width:355px}
 .popup__input_type_error{border-bottom-color:red}
 .popup__button_disabled{background:#fff;border:1px solid #000;opacity:.2;color:#000;cursor:auto;pointer-events:none}.popup__button_disabled:hover{opacity:.2}
+.loading{font-weight:500;font-size:42px;line-height:56px;color:#fff;display:flex;justify-content:center}
 
