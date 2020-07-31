@@ -11,3 +11,9 @@
     position: relative;
 }
 
+@media screen and (max-width : 620px){
+    .popup-delete__container{
+        width: 221px;
+        height: 128px;
+    }
+}
