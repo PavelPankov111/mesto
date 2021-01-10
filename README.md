@@ -35,10 +35,18 @@
   
 ### 3. javascript:
   ```javascript
-  function formSubmitHandler (evt) {
-    evt.preventDefault();
-    name.textContent = nameInput.value;
-    Input.textContent = jobInput.value;
+  export default class Card {
+    constructor(item, template, {handleCardClick}, userId, cardId, {deleteElement}, {removeLike}, {setLike}){
+        this._item = item;
+        this._template = template; 
+        this._handleCardClick = handleCardClick;      
+        this._userId = userId
+        this._cardId = cardId.owner._id
+        this._deleteElement = deleteElement
+        this._removeLike = removeLike
+        this._setLike = setLike
+        this._likes = item.likes
+    }
   }
   
 ```
