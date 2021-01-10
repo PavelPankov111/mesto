@@ -7,6 +7,7 @@
 3. _javascript_
 4. _webpack_
 5. _ООП_
+6. _babel_
 
 ### 1. html:
 ``` html
